@@ -1,0 +1,19 @@
+// Data to collect:
+// 1: user /name
+// 2: Test results (26 responses)
+// 3: Total correct
+// 4: Total incorrect
+// 5: Timestamps (time and date)
+
+json -> sql database
+
+//Routes
+    // username POST request (reference just tech news)
+    // templates GET request (to load page on frontend)
+    // test results from frontend to database GET request
+    //
+
+// UI
+    // 26 full screen cards of alphabet prompts
+
+// Google Sheets API
