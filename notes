@@ -17,3 +17,27 @@ json -> sql database
     // 26 full screen cards of alphabet prompts
 
 // Google Sheets API
+
+
+// Issues
+    //1 frontend
+        // audio
+        // html
+        // css
+        // static js files (form submission, dom manipulation)
+    //2 routing
+        // api Routes
+        // html routes (templating)
+    //3 database
+        // initiliaze / seed a database
+        // setup sequelize
+        // models
+    //4 templating
+    //5 authentication
+    //6 google sheets api
+
+Prototype
+-html/css/js quiz w/ no templating
+-working database
+-basic routing
+MVP
