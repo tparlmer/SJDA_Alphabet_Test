@@ -11,6 +11,13 @@ User.init(
             //password
             //email
             //id
+        // I want to review the function of primaryKey and autoIncrement
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true
+        },    
         firstName: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -20,7 +27,7 @@ User.init(
             allowNull: false
         },
         grade: {
-            type: Number,
+            type: DataTypes.INTEGER,
             allowNull: false,
         }
     },
