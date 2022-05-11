@@ -1,0 +1,1 @@
+// GET request to retrieve information from database and send to google sheets
