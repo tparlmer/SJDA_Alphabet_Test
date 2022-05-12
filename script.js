@@ -101,5 +101,26 @@ const questions = [
             { text: 'L', correct: false },
             { text: 'B', correct: true }
         ]
+    },
+    {
+        question: 'What does "Cake" start with?',
+        answers: [
+            { text: 'N', correct: false },
+            { text: 'C', correct: true }
+        ]
+    },
+    {
+        question: 'What does "Duck" start with?',
+        answers: [
+            { text: 'D', correct: true },
+            { text: 'K', correct: false }
+        ]
+    },
+    {
+        question: 'What does "Egg" start with?',
+        answers: [
+            { text: 'A', correct: false },
+            { text: 'E', correct: true }
+        ]
     }
 ]
