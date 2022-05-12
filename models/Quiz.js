@@ -8,7 +8,17 @@ Quiz.init(
     {
         // Table Column definitions go here (see 13.1.5 for reference)
         // TODO: add all necessary values to store quiz data from frontend
+        // This may be better designed with 1 column for responses per user?
         
+        // foreign key that relates to the primary key in the User table
+        userid: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        },
         // A
         question1: {
             type: DataTypes.STRING,
