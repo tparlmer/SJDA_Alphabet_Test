@@ -20,12 +20,12 @@ Quiz.init(
             }
         },
         // A
-        question1: {
+        A: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // B
-        question2: {
+        B: {
             type: DataTypes.STRING,
             allowNull: false,
         },

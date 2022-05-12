@@ -12,6 +12,7 @@ User.init(
             //email
             //id
         // I want to review the function of primaryKey and autoIncrement
+        // User table has MANY quizzes (one to many)
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
