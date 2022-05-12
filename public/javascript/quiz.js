@@ -15,33 +15,6 @@
 //if retake start test over
 //if test another user redirect to login page
 
-// A - apple
-// B - bike
-// C - cat
-// D - duck
-// E - egg
-// F - fish
-// G - goat
-// H - house
-// I - iguana
-// J - juice
-// K - kite
-// L - lion
-// M - mouse
-// N - nose
-// O - octopus
-// P - panda
-// Q - quilt
-// R - rope
-// S - sandwich
-// T - television
-// U - umbrella
-// V - violin
-// W - wagon
-// X - xylophone - NEED STILL
-// Y - yo-yo
-// Z - zebra
-
 let studentScore;
 
 const correctAnswers = [
@@ -74,4 +47,45 @@ const correctAnswers = [
   "z",
 ];
 
-const questions = [{ image: "./public/images/aImage.svg" }];
+const emojis = [
+  "./images/apple.svg",
+  "./images/bike.svg",
+  "./images/cat.svg",
+  "./images/duck.svg",
+  "./images/egg.svg",
+  "./images/fish.svg",
+  "./images/goat.svg",
+  "./images/house.svg",
+  "./images/ice.svg",
+  "./images/juice.svg",
+  "./images/kite.svg",
+  "./images/lion.svg",
+  "./images/mouse.svg",
+  "./images/nose.svg",
+  "./images/octopus.svg",
+  "./images/panda.svg",
+  "./images/question.svg",
+  "./images/rainbow.svg",
+  "./images/star.svg",
+  "./images/television.svg",
+  "./images/umbrella.svg",
+  "./images/volcano.svg",
+  "./images/watch.svg",
+  "./images/x-ray.svg",
+  "./images/yo-yo.svg",
+  "./images/zebra.svg",
+];
+
+const loginButton = document.getElementById("loginBtn");
+const startButton = document.getElementById("startBtn");
+
+const verifyLogin = () => {
+  event.preventDefault();
+  //here we will add fetch for post request to login credentials
+};
+const startQuiz = () => {
+  event.preventDefault;
+};
+
+document.addEventListener(loginButton, verifyLogin());
+document.addEventListener(startButton, startQuiz());
