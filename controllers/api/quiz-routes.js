@@ -8,6 +8,7 @@ const { Quiz } = require('../../models')
 // GET /api/quiz
 router.get('/', (req, res) => {
     // gets quizzes of every user in the database
+    res.json()
 })
 
 // GET /api/quiz/1
