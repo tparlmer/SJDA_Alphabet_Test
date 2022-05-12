@@ -11,6 +11,8 @@ router.get('/', (req, res) => {
     // This route is for grabbing all the users from the user table
     // filter out passwords
     // const users = await User.findAll({ include: Quizzes });
+    res.send();
+    console.log("hello world");
 })
 
 // GET /api/users/1
