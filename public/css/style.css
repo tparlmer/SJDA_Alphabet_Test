@@ -23,14 +23,6 @@ body {
   align-items: center;
 }
 
-body.correct {
-  --hue: var(hue-correct);
-}
-
-body.wrong {
-  --hue: var(hue-wrong);
-}
-
 .container {
   width: 800px;
   max-width: 80%;
@@ -38,6 +30,10 @@ body.wrong {
   border-radius: 5px;
   padding: 10px;
   box-shadow: 0 0 10px 2px;
+}
+
+img {
+  height: 90%;
 }
 
 .btn-grid {
@@ -61,15 +57,6 @@ body.wrong {
   border-color: black;
 }
 
-.btn-correct {
-  --hue: var(--hue-correct);
-  color: black;
-}
-
-.btn-wrong {
-  --hue: var(--hue-wrong);
-}
-
 .start-btn,
 .next-btn {
   font-size: 1.5rem;
@@ -77,10 +64,19 @@ body.wrong {
   padding: 10px 20px;
 }
 
+.answer-box-container {
+  margin: 0 auto;
+}
 #answer-box {
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
   border: solid 2px black;
+  border-radius: 5px;
+  font-size: 35px;
+  font-weight: 600;
+  margin: 0 43% 15px;
+  vertical-align: center;
+  text-align: center;
 }
 
 .controls {
