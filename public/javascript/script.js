@@ -28,11 +28,14 @@ function startTest() {
   questionContainerElement.classList.remove("hide");
   setNextQuestion();
 }
-
 //next question function
 function setNextQuestion() {
-  resetState();
+  resetAnswerBox();
   showQuestion(shuffledQuestions[currentQuestionIndex]);
+}
+
+function resetAnswerBox() {
+  answerBox.value = "";
 }
 
 function showQuestion(question) {
@@ -40,69 +43,22 @@ function showQuestion(question) {
   emoji.src = question.emojiImage;
   questionElement.appendChild(emoji);
   answerBox.classList.remove("hide");
-
+  nextButton.classList.remove("hide");
   checkAnswer(question);
-
-  /* question.answers.forEach((answer) => {
-    const button = document.createElement("button");
-    button.innerText = answer.text;
-    button.classList.add("btn");
-    if (answer.correct) {
-      button.dataset.correct = answer.correct;
-    }
-    button.addEventListener("click", selectAnswer);
-    answerButtonsElement.appendChild(button);
-  }); */
-}
-
-function resetState() {
-  clearStatusClass(document.body);
-  answerBox.value = "";
-  //hides next button as user moves through test
-  //nextButton.classList.add("hide");
 }
 
 function checkAnswer(question) {
-  answer = answerBox.value.toLowerCase();
-  if (answer === question.correct_answer) {
-    studentScore.push(question.correct_answer + " Correct");
-  } else {
-    studentScore.push(
-      "Correct=" + question.correct_answer + " Answered=" + answer
-    );
-  }
-  console.log(studentScore);
-  nextButton.classList.remove("hide");
-}
-//select answer function
-//passing event through as parameter
-/* function selectAnswer(e) {
-  const selectedButton = e.target;
-  const correct = selectedButton.dataset.correct;
-  setStatusClass(document.body, correct);
-  Array.from(answerButtonsElement.children).forEach((button) => {
-    setStatusClass(button, button.dataset.correct);
-  });
-  if (shuffledQuestions.length > currentQuestionIndex + 1) {
+  let answer = answerBox.value.then((answer) => {
+    if (answer === question.correct_answer) {
+      studentScore.push(question.correct_answer + " Correct");
+    } else {
+      studentScore.push(
+        "Correct=" + question.correct_answer + " Answered=" + answer
+      );
+    }
+    console.log(studentScore);
     nextButton.classList.remove("hide");
-  } else {
-    startButton.innerText = "Restart";
-    startButton.classList.remove("hide");
-  }
-} */
-
-function setStatusClass(element, correct) {
-  clearStatusClass(element);
-  if (correct) {
-    element.classList.add("correct");
-  } else {
-    element.classList.add("wrong");
-  }
-}
-
-function clearStatusClass(element) {
-  element.classList.remove("correct");
-  element.classList.remove("wrong");
+  });
 }
 
 const questions = [
