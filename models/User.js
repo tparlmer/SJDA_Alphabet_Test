@@ -36,8 +36,15 @@ User.init(
         grade: {
             type: DataTypes.INTEGER,
             allowNull: false,
-        }
-    },
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+              len: [1,5]
+            }
+          }
+        },
     {
         hooks: {
           // set up beforeCreate lifecycle "hook" functionality
