@@ -5,8 +5,9 @@ const nextButton = document.getElementById("next-btn");
 const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
-
+const submitButton = document.getElementById("submit-btn");
 let shuffledQuestions, currentQuestionIndex;
+let studentScore = [];
 
 //event listener for start button
 startButton.addEventListener("click", startTest);
@@ -14,7 +15,10 @@ nextButton.addEventListener("click", () => {
   currentQuestionIndex++;
   setNextQuestion();
 });
-
+submitButton.addEventListener("click", () => {
+  checkAnswer();
+  setNextQuestion();
+});
 //start test function
 function startTest() {
   console.log("started");
@@ -36,6 +40,7 @@ function showQuestion(question) {
   let emoji = document.createElement("img");
   emoji.src = question.emojiImage;
   questionElement.appendChild(emoji);
+  nextButton.classList.remove("hide");
 
   /* question.answers.forEach((answer) => {
     const button = document.createElement("button");
@@ -52,15 +57,26 @@ function showQuestion(question) {
 function resetState() {
   clearStatusClass(document.body);
   //hides next button as user moves through test
-  nextButton.classList.add("hide");
+  //nextButton.classList.add("hide");
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild);
   }
 }
 
+function checkAnswer() {
+  answer = document.getElementById("answerBox").ariaValueMax().toLowerCase();
+  if (answer == question.correct_answer) {
+    studentScore.push(question.correct_answer + "Correct");
+  } else {
+    studentScore.push(
+      "Correct=" + question.correct_answer + "Answered=" + answer
+    );
+  }
+  setNextQuestion();
+}
 //select answer function
 //passing event through as parameter
-function selectAnswer(e) {
+/* function selectAnswer(e) {
   const selectedButton = e.target;
   const correct = selectedButton.dataset.correct;
   setStatusClass(document.body, correct);
@@ -73,7 +89,7 @@ function selectAnswer(e) {
     startButton.innerText = "Restart";
     startButton.classList.remove("hide");
   }
-}
+} */
 
 function setStatusClass(element, correct) {
   clearStatusClass(element);
@@ -92,106 +108,106 @@ function clearStatusClass(element) {
 const questions = [
   {
     emojiImage: "./public/images/apple.svg",
-    answer: "a",
+    correct_answer: "a",
   },
   {
     emojiImage: "./public/images/bike.svg",
-    answer: "b",
+    correct_answer: "b",
   },
   {
     emojiImage: "./public/images/cat.svg",
-    answer: "c",
+    correct_answer: "c",
   },
   {
     emojiImage: "./public/images/duck.svg",
-    answer: "d",
+    correct_answer: "d",
   },
   {
     emojiImage: "./public/images/egg.svg",
-    answer: "e",
+    correct_answer: "e",
   },
   {
     emojiImage: "./public/images/fish.svg",
-    answer: "f",
+    correct_answer: "f",
   },
   {
     emojiImage: "./public/images/goat.svg",
-    answer: "g",
+    correct_answer: "g",
   },
   {
     emojiImage: "./public/images/house.svg",
-    answer: "h",
+    correct_answer: "h",
   },
   {
     emojiImage: "./public/images/ice.svg",
-    answer: "i",
+    correct_answer: "i",
   },
   {
     emojiImage: "./public/images/juice.svg",
-    answer: "j",
+    correct_answer: "j",
   },
   {
     emojiImage: "./public/images/kite.svg",
-    answer: "k",
+    correct_answer: "k",
   },
   {
     emojiImage: "./public/images/lion.svg",
-    answer: "l",
+    correct_answer: "l",
   },
   {
     emojiImage: "./public/images/mouse.svg",
-    answer: "m",
+    correct_answer: "m",
   },
   {
     emojiImage: "./public/images/nose.svg",
-    answer: "n",
+    correct_answer: "n",
   },
   {
     emojiImage: "./public/images/octopus.svg",
-    answer: "o",
+    correct_answer: "o",
   },
   {
     emojiImage: "./public/images/panda.svg",
-    answer: "p",
+    correct_answer: "p",
   },
   {
     emojiImage: "./public/images/question.svg",
-    answer: "q",
+    correct_answer: "q",
   },
   {
     emojiImage: "./public/images/rainbow.svg",
-    answer: "r",
+    correct_answer: "r",
   },
   {
     emojiImage: "./public/images/star.svg",
-    answer: "s",
+    correct_answer: "s",
   },
   {
     emojiImage: "./public/images/television.svg",
-    answer: "t",
+    correct_answer: "t",
   },
   {
     emojiImage: "./public/images/umbrella.svg",
-    answer: "u",
+    correct_answer: "u",
   },
   {
     emojiImage: "./public/images/volcano.svg",
-    answer: "v",
+    correct_answer: "v",
   },
   {
     emojiImage: "./public/images/watch.svg",
-    answer: "w",
+    correct_answer: "w",
   },
   {
     emojiImage: "./public/images/x-ray.svg",
-    answer: "x",
+    correct_answer: "x",
   },
   {
     emojiImage: "./public/images/yo-yo.svg",
-    answer: "y",
+    correct_answer: "y",
   },
   {
     emojiImage: "./public/images/zebra.svg",
-    answer: "z",
+    correct_answer: "z",
   },
 ];
