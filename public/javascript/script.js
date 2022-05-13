@@ -6,6 +6,8 @@ const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const submitButton = document.getElementById("submit-btn");
+const answerBox = document.getElementById("answer-box");
+
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
 
@@ -15,10 +17,7 @@ nextButton.addEventListener("click", () => {
   currentQuestionIndex++;
   setNextQuestion();
 });
-submitButton.addEventListener("click", () => {
-  checkAnswer();
-  setNextQuestion();
-});
+
 //start test function
 function startTest() {
   console.log("started");
@@ -40,7 +39,9 @@ function showQuestion(question) {
   let emoji = document.createElement("img");
   emoji.src = question.emojiImage;
   questionElement.appendChild(emoji);
-  nextButton.classList.remove("hide");
+  answerBox.classList.remove("hide");
+
+  checkAnswer(question);
 
   /* question.answers.forEach((answer) => {
     const button = document.createElement("button");
@@ -56,23 +57,22 @@ function showQuestion(question) {
 
 function resetState() {
   clearStatusClass(document.body);
+  answerBox.value = "";
   //hides next button as user moves through test
   //nextButton.classList.add("hide");
-  while (answerButtonsElement.firstChild) {
-    answerButtonsElement.removeChild(answerButtonsElement.firstChild);
-  }
 }
 
-function checkAnswer() {
-  answer = document.getElementById("answerBox").ariaValueMax().toLowerCase();
-  if (answer == question.correct_answer) {
-    studentScore.push(question.correct_answer + "Correct");
+function checkAnswer(question) {
+  answer = answerBox.value.toLowerCase();
+  if (answer === question.correct_answer) {
+    studentScore.push(question.correct_answer + " Correct");
   } else {
     studentScore.push(
-      "Correct=" + question.correct_answer + "Answered=" + answer
+      "Correct=" + question.correct_answer + " Answered=" + answer
     );
   }
-  setNextQuestion();
+  console.log(studentScore);
+  nextButton.classList.remove("hide");
 }
 //select answer function
 //passing event through as parameter
