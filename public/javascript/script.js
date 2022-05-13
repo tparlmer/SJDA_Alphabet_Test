@@ -1,5 +1,3 @@
-//establishing start button and question container
-
 const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
 const questionContainerElement = document.getElementById("question-container");
@@ -11,61 +9,8 @@ const answerBox = document.getElementById("answer-box");
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
 let emoji;
-//event listener for start button
-startButton.addEventListener("click", startTest);
-nextButton.addEventListener("click", () => {
-  currentQuestionIndex++;
-  clearLastImage();
-  setNextQuestion();
-});
 
-//start test function
-function startTest() {
-  console.log("started");
-  //using class hide to make start button disappear after test begins
-  startButton.classList.add("hide");
-  shuffledQuestions = questions.sort(() => Math.random() - 0.5);
-  currentQuestionIndex = 0;
-  questionContainerElement.classList.remove("hide");
-  setNextQuestion();
-}
-//next question function
-function setNextQuestion() {
-  resetAnswerBox();
-  showQuestion(shuffledQuestions[currentQuestionIndex]);
-}
-
-function resetAnswerBox() {
-  answerBox.value = "";
-}
-
-function clearLastImage() {
-  questionElement.removeChild(emoji);
-  console.log("image removed");
-}
-
-function showQuestion(question) {
-  emoji = document.createElement("img");
-  emoji.src = question.emojiImage;
-  questionElement.appendChild(emoji);
-  answerBox.classList.remove("hide");
-  nextButton.classList.remove("hide");
-  checkAnswer(question);
-}
-
-function checkAnswer(question) {
-  let answer = answerBox.value.toLowerCase();
-  if (answer === question.correct_answer) {
-    studentScore.push(question.correct_answer + " Correct");
-  } else {
-    studentScore.push(
-      "Correct=" + question.correct_answer + " Answered=" + answer
-    );
-  }
-  console.log(studentScore);
-  nextButton.classList.remove("hide");
-}
-
+//Array of questions with relative file path
 const questions = [
   {
     emojiImage: "./public/images/apple.svg",
@@ -172,3 +117,62 @@ const questions = [
     correct_answer: "z",
   },
 ];
+
+//event listener for start button and next button
+startButton.addEventListener("click", startTest);
+nextButton.addEventListener("click", () => {
+  currentQuestionIndex++;
+  clearLastImage();
+  setNextQuestion();
+});
+
+//start test function
+function startTest() {
+  console.log("started");
+  //using class hide to make start button disappear after test begins
+  startButton.classList.add("hide");
+  shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+  currentQuestionIndex = 0;
+  questionContainerElement.classList.remove("hide");
+  setNextQuestion();
+}
+//next question function
+function setNextQuestion() {
+  resetAnswerBox();
+  showQuestion(shuffledQuestions[currentQuestionIndex]);
+}
+
+//Clears input box
+function resetAnswerBox() {
+  answerBox.value = "";
+}
+
+//Removes previous image
+function clearLastImage() {
+  questionElement.removeChild(emoji);
+  console.log("image removed");
+}
+
+//Displays question using question array
+function showQuestion(question) {
+  emoji = document.createElement("img");
+  emoji.src = question.emojiImage;
+  questionElement.appendChild(emoji);
+  answerBox.classList.remove("hide");
+  nextButton.classList.remove("hide");
+  checkAnswer(question);
+}
+
+//Checks answer and push data to studentScore Array
+function checkAnswer(question) {
+  let answer = answerBox.value.toLowerCase();
+  if (answer === question.correct_answer) {
+    studentScore.push(question.correct_answer + " Correct");
+  } else {
+    studentScore.push(
+      "Correct=" + question.correct_answer + " Answered=" + answer
+    );
+  }
+  console.log(studentScore);
+  nextButton.classList.remove("hide");
+}
