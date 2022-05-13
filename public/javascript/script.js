@@ -33,8 +33,11 @@ function setNextQuestion() {
 }
 
 function showQuestion(question) {
-  questionElement.innerText = question.question;
-  question.answers.forEach((answer) => {
+  let emoji = document.createElement("img");
+  emoji.src = question.emojiImage;
+  questionElement.appendChild(emoji);
+
+  /* question.answers.forEach((answer) => {
     const button = document.createElement("button");
     button.innerText = answer.text;
     button.classList.add("btn");
@@ -43,7 +46,7 @@ function showQuestion(question) {
     }
     button.addEventListener("click", selectAnswer);
     answerButtonsElement.appendChild(button);
-  });
+  }); */
 }
 
 function resetState() {
@@ -88,107 +91,107 @@ function clearStatusClass(element) {
 
 const questions = [
   {
-    emojiImage: "./images/apple.svg",
+    emojiImage: "./public/images/apple.svg",
     answer: "a",
   },
   {
-    emojiImage: "./images/bike.svg",
+    emojiImage: "./public/images/bike.svg",
     answer: "b",
   },
   {
-    emojiImage: "./images/cat.svg",
+    emojiImage: "./public/images/cat.svg",
     answer: "c",
   },
   {
-    emojiImage: "./images/duck.svg",
+    emojiImage: "./public/images/duck.svg",
     answer: "d",
   },
   {
-    emojiImage: "./images/egg.svg",
+    emojiImage: "./public/images/egg.svg",
     answer: "e",
   },
   {
-    emojiImage: "./images/fish.svg",
+    emojiImage: "./public/images/fish.svg",
     answer: "f",
   },
   {
-    emojiImage: "./images/goat.svg",
+    emojiImage: "./public/images/goat.svg",
     answer: "g",
   },
   {
-    emojiImage: "./images/house.svg",
+    emojiImage: "./public/images/house.svg",
     answer: "h",
   },
   {
-    emojiImage: "./images/ice.svg",
+    emojiImage: "./public/images/ice.svg",
     answer: "i",
   },
   {
-    emojiImage: "./images/juice.svg",
+    emojiImage: "./public/images/juice.svg",
     answer: "j",
   },
   {
-    emojiImage: "./images/kite.svg",
+    emojiImage: "./public/images/kite.svg",
     answer: "k",
   },
   {
-    emojiImage: "./images/lion.svg",
+    emojiImage: "./public/images/lion.svg",
     answer: "l",
   },
   {
-    emojiImage: "./images/mouse.svg",
+    emojiImage: "./public/images/mouse.svg",
     answer: "m",
   },
   {
-    emojiImage: "./images/nose.svg",
+    emojiImage: "./public/images/nose.svg",
     answer: "n",
   },
   {
-    emojiImage: "./images/octopus.svg",
+    emojiImage: "./public/images/octopus.svg",
     answer: "o",
   },
   {
-    emojiImage: "./images/panda.svg",
+    emojiImage: "./public/images/panda.svg",
     answer: "p",
   },
   {
-    emojiImage: "./images/question.svg",
+    emojiImage: "./public/images/question.svg",
     answer: "q",
   },
   {
-    emojiImage: "./images/rainbow.svg",
+    emojiImage: "./public/images/rainbow.svg",
     answer: "r",
   },
   {
-    emojiImage: "./images/star.svg",
+    emojiImage: "./public/images/star.svg",
     answer: "s",
   },
   {
-    emojiImage: "./images/television.svg",
+    emojiImage: "./public/images/television.svg",
     answer: "t",
   },
   {
-    emojiImage: "./images/umbrella.svg",
+    emojiImage: "./public/images/umbrella.svg",
     answer: "u",
   },
   {
-    emojiImage: "./images/volcano.svg",
+    emojiImage: "./public/images/volcano.svg",
     answer: "v",
   },
   {
-    emojiImage: "./images/watch.svg",
+    emojiImage: "./public/images/watch.svg",
     answer: "w",
   },
   {
-    emojiImage: "./images/x-ray.svg",
+    emojiImage: "./public/images/x-ray.svg",
     answer: "x",
   },
   {
-    emojiImage: "./images/yo-yo.svg",
+    emojiImage: "./public/images/yo-yo.svg",
     answer: "y",
   },
   {
-    emojiImage: "./images/zebra.svg",
+    emojiImage: "./public/images/zebra.svg",
     answer: "z",
   },
 ];
