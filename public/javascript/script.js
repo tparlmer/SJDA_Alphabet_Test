@@ -10,11 +10,12 @@ const answerBox = document.getElementById("answer-box");
 
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
-
+let emoji;
 //event listener for start button
 startButton.addEventListener("click", startTest);
 nextButton.addEventListener("click", () => {
   currentQuestionIndex++;
+  clearLastImage();
   setNextQuestion();
 });
 
@@ -38,8 +39,13 @@ function resetAnswerBox() {
   answerBox.value = "";
 }
 
+function clearLastImage() {
+  questionElement.removeChild(emoji);
+  console.log("image removed");
+}
+
 function showQuestion(question) {
-  let emoji = document.createElement("img");
+  emoji = document.createElement("img");
   emoji.src = question.emojiImage;
   questionElement.appendChild(emoji);
   answerBox.classList.remove("hide");
@@ -48,17 +54,16 @@ function showQuestion(question) {
 }
 
 function checkAnswer(question) {
-  let answer = answerBox.value.then((answer) => {
-    if (answer === question.correct_answer) {
-      studentScore.push(question.correct_answer + " Correct");
-    } else {
-      studentScore.push(
-        "Correct=" + question.correct_answer + " Answered=" + answer
-      );
-    }
-    console.log(studentScore);
-    nextButton.classList.remove("hide");
-  });
+  let answer = answerBox.value.toLowerCase();
+  if (answer === question.correct_answer) {
+    studentScore.push(question.correct_answer + " Correct");
+  } else {
+    studentScore.push(
+      "Correct=" + question.correct_answer + " Answered=" + answer
+    );
+  }
+  console.log(studentScore);
+  nextButton.classList.remove("hide");
 }
 
 const questions = [
