@@ -11,16 +11,16 @@ router.get('/', (req, res) => {
     // This route is for grabbing all the users from the user table
     // filter out passwords
     // const users = await User.findAll({ include: Quizzes });
-    User.findall({
-        attributes: {exclude: ['password']}
-    })
-    .then(dbuserData=> res.json(dbuserData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err)
-    })
-    //res.send();
-    //console.log("hello world");
+  //  User.findall({
+    //    attributes: {exclude: ['password']}
+    //})
+    //.then(dbuserData=> res.json(dbuserData))
+    //.catch(err => {
+      //  console.log(err);
+       // res.status(500).json(err)
+    //})
+    res.send();
+    console.log("hello world");
 })
 
 // GET /api/users/1
