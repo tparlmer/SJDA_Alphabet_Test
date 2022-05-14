@@ -123,6 +123,7 @@ const questions = [
 //event listener for start button and next button
 startButton.addEventListener("click", startTest);
 nextButton.addEventListener("click", () => {
+  checkAnswer(shuffledQuestions[currentQuestionIndex]);
   currentQuestionIndex++;
   clearLastImage();
   setNextQuestion();
@@ -162,18 +163,17 @@ function showQuestion(question) {
   questionElement.appendChild(emoji);
   answerBox.classList.remove("hide");
   nextButton.classList.remove("hide");
-  checkAnswer(question);
 }
 
 //Checks answer and push data to studentScore Array
 function checkAnswer(questions) {
   let studentAnswer = document.getElementById("answer-box").value;
-  console.log(studentAnswer);
+
   studentScore.push({
     letter: questions.correct_answer,
     answer: studentAnswer,
   });
 
-  //onsole.log(studentScore);
+  console.log(studentScore);
   nextButton.classList.remove("hide");
 }
