@@ -82,3 +82,30 @@ body {
     color: var(--color-error);
     border-color: var(--color-error);
 }
+
+.form-input-error-message {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-error);
+}
+
+.form-button {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: lightgray;
+    border: none;
+    border-radius: var(--border-radius);
+    outline: none;
+    cursor: pointer;
+    background: var(--color-primary);
+}
+
+.form-button:hover {
+    background: var(--color-primary-dark);
+}
+
+.form-button:active {
+    transform: scale(0.98);
+}
