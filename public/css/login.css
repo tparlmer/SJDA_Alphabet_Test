@@ -22,13 +22,17 @@ body {
     padding: 2rem;
     box-shadow: 0 0 10px black;
     border-radius: var(--border-radius);
-    background: hsl(330, 48%, 72%);
+    background: hsl(269, 91%, 86%);
 }
 
 .container,
 .form-input,
 .form-button {
     font: 500 1rem 'Courier New', Courier, monospace;
+}
+
+.form-hidden {
+    display: none;
 }
 
 .form > *:first-child {
@@ -94,7 +98,7 @@ body {
     padding: 1rem 2rem;
     font-weight: bold;
     font-size: 1.1rem;
-    color: lightgray;
+    color: white;
     border: none;
     border-radius: var(--border-radius);
     outline: none;
