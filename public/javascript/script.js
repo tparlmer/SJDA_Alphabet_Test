@@ -8,6 +8,8 @@ const answerBox = document.getElementById("answer-box");
 
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
+//const studentScoreString = JSON.stringify(studentScore);
+//console.log(studentScoreString);
 let emoji;
 
 //Array of questions with relative file path
@@ -164,15 +166,14 @@ function showQuestion(question) {
 }
 
 //Checks answer and push data to studentScore Array
-function checkAnswer(question) {
-  let answer = answerBox.value.toLowerCase();
-  if (answer === question.correct_answer) {
-    studentScore.push(question.correct_answer + " Correct");
-  } else {
-    studentScore.push(
-      "Correct=" + question.correct_answer + " Answered=" + answer
-    );
-  }
-  console.log(studentScore);
+function checkAnswer(questions) {
+  let studentAnswer = document.getElementById("answer-box").value;
+  console.log(studentAnswer);
+  studentScore.push({
+    letter: questions.correct_answer,
+    answer: studentAnswer,
+  });
+
+  //onsole.log(studentScore);
   nextButton.classList.remove("hide");
 }
