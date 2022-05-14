@@ -109,3 +109,17 @@ body {
 .form-button:active {
     transform: scale(0.98);
 }
+
+.form-text {
+    text-align: center;
+}
+
+.form-link {
+    color: var(--color-secondary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form-link:hover {
+    text-decoration: underline;
+}
