@@ -56,3 +56,29 @@ body {
 .form-message-error {
     color: var(--color-error);
 }
+
+.form-input-group {
+    margin-bottom: 1rem;
+}
+
+.form-input {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    border: 1px solid lightgray;
+    outline: none;
+    background: #eeeeee;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.form-input:focus {
+    border-color: var(--color-primary);
+    background: white;
+}
+
+.form-input-error {
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
