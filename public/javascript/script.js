@@ -8,8 +8,6 @@ const answerBox = document.getElementById("answer-box");
 
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
-//const studentScoreString = JSON.stringify(studentScore);
-//console.log(studentScoreString);
 let emoji;
 
 //Array of questions with relative file path
@@ -158,6 +156,7 @@ function clearLastImage() {
 
 //Displays question using question array
 function showQuestion(question) {
+  console.log(currentQuestionIndex);
   emoji = document.createElement("img");
   emoji.src = question.emojiImage;
   questionElement.appendChild(emoji);
@@ -174,6 +173,22 @@ function checkAnswer(questions) {
     answer: studentAnswer,
   });
 
-  console.log(studentScore);
+  //console.log(studentScore);
   nextButton.classList.remove("hide");
+  //const studentScoreString = JSON.stringify(studentScore);
+  //console.log(studentScoreString);
 }
+
+const endTest = () => {
+  //console.log("in test finished", currentQuestionIndex);
+
+  if (currentQuestionIndex == questions.length - 1) {
+    console.log("test finished");
+    const studentScoreString = JSON.stringify(studentScore);
+    console.log(studentScoreString);
+  } else {
+    console.log("test not working");
+  }
+};
+
+endTest();
