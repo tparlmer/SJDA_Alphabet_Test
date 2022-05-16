@@ -5,7 +5,7 @@ const User = require('./User');
 const Quiz = require('./Quiz');
 
 User.hasMany(Quiz, {
-    foreignKey: 'user_id';
+    foreignKey: 'user_id'
 })
 
 Quiz.belongsTo(User, {
