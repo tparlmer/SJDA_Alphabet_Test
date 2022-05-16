@@ -5,14 +5,14 @@ function setFormMessage(formElement, type, message) {
     messageElement.classList.remove('form-message-success', 'form-message-error');
     messageElement.classList.add(`form-message-${type}`);
 }
-
+/*
 function setInputError(inputElement, message) {
     inputElement.classList.add('form-input-error');
     inputElement.parentElement.querySelector('.form-input-error-message').textContent = message;
 }
 
 setFormMessage(loginForm, 'success', 'You are logged in:)');
-
+*/
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.querySelector('#login');
     const createAccountForm = document.querySelector('#create-account');
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         createAccountForm.classList.add('form-hidden');
     });
 
-    loginForm.addEventListener('submit', e => {
+   /* loginForm.addEventListener('submit', e => {
         e.preventDefault();
 
         //perform your login
@@ -37,9 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
         setFormMessage(loginForm, 'error', 'invalid username/password');
     });
 
-    document.querySelectorAll('.form-input').forEach(inputElement => {
-        inputElement.addEventListener('blur', e => {
+    //MUST DECIDE ON SOME SORT OF VALIDATION FOR USERNAME AND PASSWORD
+    //document.querySelectorAll('.form-input').forEach(inputElement => {
+      //  inputElement.addEventListener('blur', e => {
             
-        })
-    })
+        //})
+    //})
+    */
 })
