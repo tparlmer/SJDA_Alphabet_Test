@@ -121,6 +121,7 @@ const questions = [
 //event listener for start button and next button
 startButton.addEventListener("click", startTest);
 nextButton.addEventListener("click", () => {
+  checkAnswer(shuffledQuestions[currentQuestionIndex]);
   currentQuestionIndex++;
   clearLastImage();
   setNextQuestion();
@@ -155,24 +156,39 @@ function clearLastImage() {
 
 //Displays question using question array
 function showQuestion(question) {
+  console.log(currentQuestionIndex);
   emoji = document.createElement("img");
   emoji.src = question.emojiImage;
   questionElement.appendChild(emoji);
   answerBox.classList.remove("hide");
   nextButton.classList.remove("hide");
-  checkAnswer(question);
 }
 
 //Checks answer and push data to studentScore Array
-function checkAnswer(question) {
-  let answer = answerBox.value.toLowerCase();
-  if (answer === question.correct_answer) {
-    studentScore.push(question.correct_answer + " Correct");
-  } else {
-    studentScore.push(
-      "Correct=" + question.correct_answer + " Answered=" + answer
-    );
-  }
-  console.log(studentScore);
+function checkAnswer(questions) {
+  let studentAnswer = document.getElementById("answer-box").value;
+
+  studentScore.push({
+    letter: questions.correct_answer,
+    answer: studentAnswer,
+  });
+
+  //console.log(studentScore);
   nextButton.classList.remove("hide");
+  //const studentScoreString = JSON.stringify(studentScore);
+  //console.log(studentScoreString);
 }
+
+const endTest = () => {
+  //console.log("in test finished", currentQuestionIndex);
+
+  if (currentQuestionIndex == questions.length - 1) {
+    console.log("test finished");
+    const studentScoreString = JSON.stringify(studentScore);
+    console.log(studentScoreString);
+  } else {
+    console.log("test not working");
+  }
+};
+
+endTest();
