@@ -1,7 +1,13 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const bcrypt =require('bcrypt')
 
-class User extends Model {}
+class User extends Model {
+    //Checks password per user
+    checkPassword(loginPw){
+        return bcrypt.compareSync(loginPw, this.password);
+    }
+}
 
 // Define table columns and configuration (https://sequelize.org/docs/v6/core-concepts/model-basics/)
 User.init(
@@ -30,9 +36,28 @@ User.init(
         grade: {
             type: DataTypes.INTEGER,
             allowNull: false,
-        }
-    },
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+              len: [1,5]
+            }
+          }
+        },
     {
+        hooks: {
+          // set up beforeCreate lifecycle "hook" functionality
+          async beforeCreate(newUserData) {
+            newUserData.password = await bcrypt.hash(newUserData.password, 10);
+            return newUserData;
+          },
+    
+          async beforeUpdate(updatedUserData) {
+            updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+            return updatedUserData;
+          }
+        },
         // Table configuration options go here
         sequelize,
         timestamps: false,
