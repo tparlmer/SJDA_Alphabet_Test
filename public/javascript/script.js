@@ -6,6 +6,7 @@ const answerButtonsElement = document.getElementById("answer-buttons");
 const submitButton = document.getElementById("submit-btn");
 const answerBox = document.getElementById("answer-box");
 var x = document.getElementById("myAudio");
+var y = document.getElementById("myAudio2");
 
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
@@ -122,10 +123,15 @@ const questions = [
 //event listener for start button and next button
 startButton.addEventListener("click", startTest);
 nextButton.addEventListener("click", () => {
-  checkAnswer(shuffledQuestions[currentQuestionIndex]);
-  currentQuestionIndex++;
-  clearLastImage();
-  setNextQuestion();
+  console.log('***answerBox',answerBox.value);
+  if(answerBox.value == '') {
+    y.play();
+  } else {
+    checkAnswer(shuffledQuestions[currentQuestionIndex]);
+    currentQuestionIndex++;
+    clearLastImage();
+    setNextQuestion();
+  } 
 });
 
 //start test function
