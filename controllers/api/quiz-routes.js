@@ -9,7 +9,7 @@ const { Quiz } = require('../../models')
 // GET /api/quiz
 router.get('/', (req, res) => {
     // gets quizzes of every user in the database
-    console.log("Merry xmas ya filthy animal")
+    console.log("test GET api/quiz")
     res.json();
 })
 
@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     // gets a specific quiz
     // figure out how to tell database that the student has completed a specific quiz
-    console.log("meh")
+    console.log("test GET api/quiz/id")
     res.send();
 })
 
@@ -28,8 +28,8 @@ router.post('/', (req, res) => {
     // take variable where you stored the quiz results on the frontend
     // returns something back to the frontend
     // GOAL - GET JSON FROM FRONTEND
-    console.log("meoww");
-    res.send();
+    console.log("test POST api/quiz");
+    res.json(req.body);
 })
 
 // must export rotuer for the file/ routes to be readable - like a return statement in a function
