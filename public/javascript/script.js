@@ -1,13 +1,14 @@
 const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
 const questionContainerElement = document.getElementById("question-container");
-const questionElement = document.getElementById("question");
+const headerElement = document.getElementById("card-header");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const submitButton = document.getElementById("submit-btn");
 const answerBox = document.getElementById("answer-box");
 
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
+let numberCorrect = 0;
 let emoji;
 
 //Array of questions with relative file path
@@ -137,10 +138,29 @@ function startTest() {
   questionContainerElement.classList.remove("hide");
   setNextQuestion();
 }
+
+const checkEndTest = (currentQuestion) => {
+  //console.log("in test finished", currentQuestionIndex);
+
+  if (currentQuestion == 26) {
+    console.log("test finished");
+    const studentScoreString = JSON.stringify(studentScore);
+    console.log(studentScoreString);
+    return true;
+  } else {
+    console.log("test not finished");
+    return false;
+  }
+};
 //next question function
 function setNextQuestion() {
   resetAnswerBox();
-  showQuestion(shuffledQuestions[currentQuestionIndex]);
+
+  if (checkEndTest(currentQuestionIndex) === false) {
+    showQuestion(shuffledQuestions[currentQuestionIndex]);
+  } else if (checkEndTest(currentQuestionIndex) == true) {
+    endTest();
+  }
 }
 
 //Clears input box
@@ -150,7 +170,7 @@ function resetAnswerBox() {
 
 //Removes previous image
 function clearLastImage() {
-  questionElement.removeChild(emoji);
+  headerElement.removeChild(emoji);
   console.log("image removed");
 }
 
@@ -159,7 +179,7 @@ function showQuestion(question) {
   console.log(currentQuestionIndex);
   emoji = document.createElement("img");
   emoji.src = question.emojiImage;
-  questionElement.appendChild(emoji);
+  headerElement.appendChild(emoji);
   answerBox.classList.remove("hide");
   nextButton.classList.remove("hide");
 }
@@ -167,7 +187,9 @@ function showQuestion(question) {
 //Checks answer and push data to studentScore Array
 function checkAnswer(questions) {
   let studentAnswer = document.getElementById("answer-box").value;
-
+  if (questions.correct_answer == studentAnswer) {
+    numberCorrect++;
+  }
   studentScore.push({
     letter: questions.correct_answer,
     answer: studentAnswer,
@@ -180,15 +202,10 @@ function checkAnswer(questions) {
 }
 
 const endTest = () => {
-  //console.log("in test finished", currentQuestionIndex);
-
-  if (currentQuestionIndex == questions.length - 1) {
-    console.log("test finished");
-    const studentScoreString = JSON.stringify(studentScore);
-    console.log(studentScoreString);
-  } else {
-    console.log("test not working");
-  }
+  answerBox.classList.add("hide");
+  nextButton.classList.remove("hide");
+  headerElement.textContent = "Alphabet Test Finished";
+  const scoreBox = document.createElement("div");
+  scoreBox.textContent = numberCorrect + " Out of 26 Correct";
+  headerElement.appendChild(scoreBox);
 };
-
-endTest();
