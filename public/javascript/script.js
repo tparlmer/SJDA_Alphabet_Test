@@ -6,7 +6,8 @@ const answerButtonsElement = document.getElementById("answer-buttons");
 const submitButton = document.getElementById("submit-btn");
 const answerBox = document.getElementById("answer-box");
 
-let shuffledQuestions, currentQuestionIndex;
+let shuffledQuestions;
+let currentQuestionIndex = 0;
 let studentScore = [];
 let emoji;
 
@@ -124,7 +125,11 @@ nextButton.addEventListener("click", () => {
   checkAnswer(shuffledQuestions[currentQuestionIndex]);
   currentQuestionIndex++;
   clearLastImage();
-  setNextQuestion();
+  console.log(shuffledQuestions.length);
+  console.log(currentQuestionIndex);
+  if (currentQuestionIndex + 1 <= shuffledQuestions.length) {
+    setNextQuestion();
+  }
 });
 
 //start test function
@@ -179,8 +184,14 @@ function checkAnswer(questions) {
   //console.log(studentScoreString);
 }
 
-const endTest = () => {
+// local storage
+
+const endTest = (studentScore) => {
   //console.log("in test finished", currentQuestionIndex);
+  
+  for (i=0; i < studentScore.length; i++) {
+    localStorage.setItem('question' + i, studentScore[i]);
+  }
 
   if (currentQuestionIndex == questions.length - 1) {
     console.log("test finished");
@@ -191,4 +202,4 @@ const endTest = () => {
   }
 };
 
-endTest();
+endTest(studentScore);
