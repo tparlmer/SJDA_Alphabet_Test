@@ -137,10 +137,27 @@ function startTest() {
   questionContainerElement.classList.remove("hide");
   setNextQuestion();
 }
+
+const checkEndTest = (currentQuestion) => {
+  //console.log("in test finished", currentQuestionIndex);
+
+  if (currentQuestion == 26) {
+    console.log("test finished");
+    const studentScoreString = JSON.stringify(studentScore);
+    console.log(studentScoreString);
+    return true;
+  } else {
+    console.log("test not finished");
+    return false;
+  }
+};
 //next question function
 function setNextQuestion() {
   resetAnswerBox();
-  showQuestion(shuffledQuestions[currentQuestionIndex]);
+
+  if (checkEndTest(currentQuestionIndex) === false) {
+    showQuestion(shuffledQuestions[currentQuestionIndex]);
+  }
 }
 
 //Clears input box
@@ -180,15 +197,5 @@ function checkAnswer(questions) {
 }
 
 const endTest = () => {
-  //console.log("in test finished", currentQuestionIndex);
-
-  if (currentQuestionIndex == questions.length - 1) {
-    console.log("test finished");
-    const studentScoreString = JSON.stringify(studentScore);
-    console.log(studentScoreString);
-  } else {
-    console.log("test not working");
-  }
+  console.log("school is out of session");
 };
-
-endTest();
