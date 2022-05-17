@@ -5,6 +5,7 @@ const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const submitButton = document.getElementById("submit-btn");
 const answerBox = document.getElementById("answer-box");
+var x = document.getElementById("myAudio");
 
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
@@ -156,6 +157,9 @@ function clearLastImage() {
 
 //Displays question using question array
 function showQuestion(question) {
+  x.pause(); 
+  x.currentTime = 0;
+  x.play(); 
   console.log(currentQuestionIndex);
   emoji = document.createElement("img");
   emoji.src = question.emojiImage;
