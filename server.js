@@ -33,10 +33,21 @@ const sequelize = require("./config/connection");
 // app.engine("handlebars", hbs.engine);
 // app.set("view engine", "handlebars");
 
+//set view engine to ejs
+app.set('view engine', 'ejs');
+
+//NEED TO SET UP res.render ROUTE
+
+//index page
+app.get('/', function(req, res) {
+  res.render('pages/index');
+});
+
 // call express
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use('/css', express.static(__dirname + 'public/css'));
 
 // node reference to controllers folder
 app.use(require("./controllers/"));
