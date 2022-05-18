@@ -26,27 +26,88 @@
     </audio>
 
     <div class="container">
+      <!--Login link for teachers on the start page-->
       <div id="teacherlogin">
         <div id="teacherlogin">
           <button type="button" id="login-btn" class="btn btn-link">Login as Instructor</button>
         </div>
       </div>
+
+      <!--Login form for teachers-->
       <div id="teacherlogin-container" class="hide">
         <div id="teacherlogincontainer">
           <form>
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
               <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
-            <button type="submit" id="teacherSubmitBtn" class="btn btn-primary">Submit</button>
+            <button type="button" id="teacherSubmitBtn" class="btn btn-primary">Submit</button>
           </form>
         </div>
       </div>
+
+      <!--Quiz Results Dashboard-->
+      <div id="resDashboard-container" class="hide">
+        <div id="resDashboardcontainer">
+
+              <!--Name Search-->
+              <div class="nameSearchDiv">
+                <div class="nameSerchInputDiv">
+                  <input type="search" id="nameSearchinput" class="form-control" />
+                  <label class="form-label" for="form1">Search</label>
+                </div>
+                <div>
+                  <button type="button" id="nameSearchBtn" class="btn btn-outline-primary">search</button>
+                </div>
+              </div>
+
+              <!--Data Search-->
+              <div class="dateSearchDiv">
+                <div class="dateSerchInputDiv">
+                  <input type="search" id="dateSearchinput" class="form-control" />
+                  <label class="form-label" for="form1">Search</label>
+                </div>
+                <button type="button" id="dateSearchBtn" class="btn btn-outline-primary">search</button>
+
+          </div>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <div id="question-container" class="hide">
         <div id="card-header">What letter does the image start with?</div>
         <!--Emoji Image dynamically generated here-->

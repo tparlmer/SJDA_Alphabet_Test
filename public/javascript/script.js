@@ -4,6 +4,7 @@ const loginButton = document.getElementById("login-btn");
 const questionContainerElement = document.getElementById("question-container");
 const teacherLoginElement = document.getElementById("teacherlogin");
 const teacherLoginConElement = document.getElementById("teacherlogin-container");
+const resDashboardConElement = document.getElementById("resDashboard-container");
 const headerElement = document.getElementById("card-header");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const submitButton = document.getElementById("submit-btn");
@@ -149,7 +150,14 @@ loginButton.addEventListener("click",() => {
 });
 
 teacherSubmitBtn.addEventListener("click",() => {
-  alert("Submitted form");
+ 
+  //TODO: Authentication
+
+  loginButton.classList.add("hide");
+  startButton.classList.add("hide");
+  teacherLoginConElement.classList.add("hide");
+  resDashboardConElement.classList.remove("hide");
+  
 });
 
 // Check if the input entered is a letter
