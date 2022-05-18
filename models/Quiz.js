@@ -23,262 +23,262 @@ Quiz.init(
             }
         },
         // Letter A
-        letter1: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer1: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter B
-        letter2: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer2: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter C
-        letter3: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer3: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter D
-        letter4: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer4: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter E
-        letter5: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer5: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter F
-        letter6: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer6: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter G
-        letter7: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer7: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter H
-        letter8: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer8: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter I
-        letter9: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer9: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter J
-        letter10: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer10: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter K
-        letter11: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer11: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter L
-        letter12: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer12: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter M
-        letter13: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer13: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter N
-        letter14: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer14: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter O
-        letter15: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer15: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter P
-        letter16: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer16: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter Q
-        letter17: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer17: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter R
-        letter18: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer18: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter S
-        letter19: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer19: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter T
-        letter20: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer20: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter U
-        letter21: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer21: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter V
-        letter22: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer22: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter W
-        letter23: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer23: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter X
-        letter24: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer24: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter Y
-        letter25: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer25: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Letter Z
-        letter26: {
+        letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Answer
-        answer26: {
+        answer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
