@@ -1,6 +1,9 @@
 const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
+const loginButton = document.getElementById("login-btn");
 const questionContainerElement = document.getElementById("question-container");
+const teacherLoginElement = document.getElementById("teacherlogin");
+const teacherLoginConElement = document.getElementById("teacherlogin-container");
 const headerElement = document.getElementById("card-header");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const submitButton = document.getElementById("submit-btn");
@@ -139,6 +142,16 @@ nextButton.addEventListener("click", () => {
   } 
 });
 
+loginButton.addEventListener("click",() => {
+  loginButton.classList.add("hide");
+  teacherLoginConElement.classList.remove("hide");
+  startButton.classList.add("hide");
+});
+
+teacherSubmitBtn.addEventListener("click",() => {
+  alert("Submitted form");
+});
+
 // Check if the input entered is a letter
 function isCharacterALetter(char) {
   return (/[a-zA-Z]/).test(char)
@@ -149,6 +162,7 @@ function startTest() {
   console.log("started");
   //using class hide to make start button disappear after test begins
   startButton.classList.add("hide");
+  teacherLoginElement.classList.add("hide");
   shuffledQuestions = questions.sort(() => Math.random() - 0.5);
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove("hide");
