@@ -13,7 +13,7 @@ Quiz.init(
     // TO DO
     // add letter and answer
 
-    // foreign key that relates to the primary key in the User table
+    // primary key of the quiz
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -21,262 +21,132 @@ Quiz.init(
       autoIncrement: true
     },
     // Letter A
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionA: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter B
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionB: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter C
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionC: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter D
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionD: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter E
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionE: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter F
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionF: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter G
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionG: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter H
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionH: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter I
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionI: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter J
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionJ: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter K
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionK: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter L
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionL: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter M
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionM: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter N
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionN: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter O
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionO: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter P
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionP: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter Q
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionQ: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter R
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionR: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter S
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionS: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter T
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionT: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter U
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionU: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter V
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionV: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter W
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionW: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter X
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionX: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter Y
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionY: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Letter Z
-    letter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Answer
-    answer: {
+    questionZ: {
       type: DataTypes.STRING,
       allowNull: false,
     },

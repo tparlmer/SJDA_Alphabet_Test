@@ -24,16 +24,35 @@ router.get("/:id", (req, res) => {
 // POST /api/quiz
 // add ID for POST route??
 router.post("/", (req, res) => {
-  Quiz.bulkCreate([
-    {
-      letter: req.body.letter,
-    },
-    {
-      answer: req.body.answer,
-    },
-  ]);
+  console.log(req.body);
+  const quizAnswers= req.body.quizData;
+  const user_id = req.body.user_id
+  // Quiz.bulkCreate([
+  //   {
+  //     letter: req.body.letter,
+  //   },
+  //   {
+  //     answer: req.body.answer,
+  //   },
+  // ]);
 
-  // creates a quiz in the quiz table (this will be a row of results)
+ const quizObject= {}
+
+quizObject.user_id= user_id
+ console.log(quizAnswers);
+ for (let i = 0; i < quizAnswers.length; i++){
+   console.log(i);
+   quizObject["question"+ quizAnswers[i].letter.toUpperCase()] = quizAnswers[i].answer
+ }
+
+
+ console.log({quizObject});
+ 
+ Quiz.create(quizObject).then(data => {
+   console.log(data);
+ })
+ 
+ // creates a quiz in the quiz table (this will be a row of results)
   // take variable where you stored the quiz results on the frontend
   // returns something back to the frontend
   // GOAL - GET JSON FROM FRONTEND

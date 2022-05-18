@@ -221,6 +221,7 @@ function checkAnswer(questions) {
     answer: studentAnswer,
   });
 
+  studentScore
   //console.log(studentScore);
   nextButton.classList.remove("hide");
   //const studentScoreString = JSON.stringify(studentScore);
@@ -234,7 +235,10 @@ const sendScore = () => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(studentScore),
+    body: JSON.stringify({ 
+      user_id:1,//change this later (dummy data for testing)
+      quizData: studentScore
+    }),
   })
     .then((response) => {
       if (response.ok) {
