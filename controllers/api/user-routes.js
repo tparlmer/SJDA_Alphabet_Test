@@ -60,6 +60,7 @@ router.post('/', (req, res) => {
     User.create({
       firstname: req.body.firstname,
       lastname: req.body.lastname,
+      grade: req.body.grade,
       password: req.body.password
     })
       .then(dbUserData => {
@@ -68,14 +69,14 @@ router.post('/', (req, res) => {
           req.body.firstname = dbUserData.firstname;
           req.session.lastname = dbUserData.lastname;
           req.session.loggedIn = true;
-    
-          res.json(dbUserData);
         });
       })
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
       });
+      console.log("meoww");
+      res.send();
   });
 
 router.post('/login', (req, res) => {
@@ -87,7 +88,7 @@ router.post('/login', (req, res) => {
     }
   }).then(dbUserData => {
     if (!dbUserData) {
-      res.status(400).json({ message: 'No user with that email address!' });
+      res.status(400).json({ message: 'No user with that name!' });
       return;
     }
 
