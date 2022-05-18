@@ -125,8 +125,10 @@ const questions = [
 //event listener for start button and next button
 startButton.addEventListener("click", startTest);
 nextButton.addEventListener("click", () => {
-  console.log("***answerBox", answerBox.value);
-  if (answerBox.value == "") {
+
+  //Validate user input
+  if(answerBox.value == '') {
+
     emptyInputAudio.play();
   } else if (
     answerBox.value.length != 1 ||
@@ -208,7 +210,10 @@ function showQuestion(question) {
 //Checks answer and push data to studentScore Array
 function checkAnswer(questions) {
   let studentAnswer = document.getElementById("answer-box").value;
-  if (questions.correct_answer == studentAnswer) {
+
+  // Check for case-insensitive input
+  if (questions.correct_answer.toUpperCase() == studentAnswer.toUpperCase()) {
+    console.log('correctanswer');
     numberCorrect++;
   }
   studentScore.push({
