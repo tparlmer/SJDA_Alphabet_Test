@@ -14,13 +14,11 @@ Quiz.init(
     // add letter and answer
 
     // foreign key that relates to the primary key in the User table
-    userid: {
-      type: DataTypes.STRING,
+    id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: "user",
-        key: "id",
-      },
+      primaryKey: true,
+      autoIncrement: true
     },
     // Letter A
     letter: {
@@ -282,6 +280,13 @@ Quiz.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id'
+      }
+    }
   },
   {
     // Table configuration options go here

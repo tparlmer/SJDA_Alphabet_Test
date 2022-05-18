@@ -1,17 +1,15 @@
 // import all models
-// this file imports the User model and exports an object with it as a property
-
-const User = require('./User');
 const Quiz = require('./Quiz');
+const User = require('./User');
 
+// create associations
 User.hasMany(Quiz, {
-    foreignKey: 'user_id'
-})
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
 Quiz.belongsTo(User, {
-    foreignKey: 'user_id',
-    onDelete: 'SET NULL'
-  });
-
+  foreignKey: 'user_id',
+});
 
 module.exports = { User, Quiz };
