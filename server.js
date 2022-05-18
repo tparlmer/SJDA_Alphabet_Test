@@ -1,6 +1,6 @@
 // require express
-const express = require('express');
-const path = require('path');
+const express = require("express");
+const path = require("path");
 
 // instatiate the server
 const app = express();
@@ -36,11 +36,12 @@ const sequelize = require("./config/connection");
 // call express
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, "public")));
 
 // node reference to controllers folder
 app.use(require("./controllers/"));
 
 app.listen(PORT, () => {
-  console.log(`Port running on ${PORT}`)
-})
+  console.log(`Port running on ${PORT}`);
+});
