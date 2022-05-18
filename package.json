@@ -1,11 +1,12 @@
 {
-  "name": "hacker-news-clone",
+  "name": "alphabet_test",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "seeds": "node seeds/index.js"
+    "seeds": "node seeds/index.js",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +22,20 @@
     "sequelize": "^5.21.5"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "jest": "^28.1.0"
   }
+=======
+    "jest": "^25.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tparlmer/SJDA_Alphabet_Test.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/tparlmer/SJDA_Alphabet_Test/issues"
+  },
+  "homepage": "https://github.com/tparlmer/SJDA_Alphabet_Test#readme"
+>>>>>>> e4d0782acd1c55e8a1d95bde2c3d197d15d8cd70
 }
