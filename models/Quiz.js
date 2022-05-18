@@ -14,14 +14,14 @@ Quiz.init(
     // add letter and answer
 
     // foreign key that relates to the primary key in the User table
-    userid: {
+    /*   userid: {
       type: DataTypes.STRING,
       allowNull: false,
       references: {
         model: "user",
         key: "id",
       },
-    },
+    }, */
     // Letter A
     letter1: {
       type: DataTypes.STRING,

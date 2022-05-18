@@ -24,7 +24,14 @@ router.get("/:id", (req, res) => {
 // POST /api/quiz
 // add ID for POST route??
 router.post("/", (req, res) => {
-  Quiz.bulkCreate(req.body);
+  Quiz.bulkCreate([
+    {
+      letter: req.body.letter,
+    },
+    {
+      answer: req.body.answer,
+    },
+  ]);
 
   // creates a quiz in the quiz table (this will be a row of results)
   // take variable where you stored the quiz results on the frontend
