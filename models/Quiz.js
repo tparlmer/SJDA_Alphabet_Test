@@ -11,11 +11,11 @@ Quiz.init(
         // This may be better designed with 1 column for responses per user?
         
         // foreign key that relates to the primary key in the User table
-        userid: {
+        User_id: {
             type: DataTypes.STRING,
             allowNull: false,
             references: {
-                model: 'user',
+                model: 'User',
                 key: 'id'
             }
         },

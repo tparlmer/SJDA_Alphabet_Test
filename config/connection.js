@@ -12,13 +12,4 @@ const sequelize = process.env.JAWSDB_URL
       port: 3306
     });
 
-/* 
-This is the code from module 13, lesson 1 that sets up sequelize - I have added the SJDA database
-const sequelize = new Sequelize('sjda_alphabet_test_db', 'username', 'password', {
-  host: 'localhost',
-  dialect: 'mysql',
-  port: 3306
-});
-*/
-
 module.exports = sequelize;
