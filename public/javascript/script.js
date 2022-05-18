@@ -209,7 +209,7 @@ function checkAnswer(questions) {
 
   // Check for case-insensitive input
   if (questions.correct_answer.toUpperCase() == studentAnswer.toUpperCase()) {
-    console.log('correctanswer');
+    //console.log('correctanswer');
     numberCorrect++;
   }
   studentScore.push({
