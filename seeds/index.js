@@ -1,7 +1,5 @@
 const seedUsers = require('./user-seeds');
-const seedUsers = require('./25-word-list');
-
-
+//const seedUsers = require('./25-word-list');
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
