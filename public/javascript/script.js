@@ -5,6 +5,9 @@ const headerElement = document.getElementById("card-header");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const submitButton = document.getElementById("submit-btn");
 const answerBox = document.getElementById("answer-box");
+var quesAudio = document.getElementById("quesAudio");
+var emptyInputAudio = document.getElementById("emptyInputAudio");
+var letterValidAudio = document.getElementById("letterValidAudio");
 
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
@@ -122,11 +125,23 @@ const questions = [
 //event listener for start button and next button
 startButton.addEventListener("click", startTest);
 nextButton.addEventListener("click", () => {
-  checkAnswer(shuffledQuestions[currentQuestionIndex]);
-  currentQuestionIndex++;
-  clearLastImage();
-  setNextQuestion();
+  console.log('***answerBox',answerBox.value);
+  if(answerBox.value == '') {
+    emptyInputAudio.play();
+  } else if(answerBox.value.length != 1 || !isCharacterALetter(answerBox.value)) {
+    letterValidAudio.play();
+  } else {
+    checkAnswer(shuffledQuestions[currentQuestionIndex]);
+    currentQuestionIndex++;
+    clearLastImage();
+    setNextQuestion();
+  } 
 });
+
+// Check if the input entered is a letter
+function isCharacterALetter(char) {
+  return (/[a-zA-Z]/).test(char)
+}
 
 //start test function
 function startTest() {
@@ -176,6 +191,9 @@ function clearLastImage() {
 
 //Displays question using question array
 function showQuestion(question) {
+  quesAudio.pause(); 
+  quesAudio.currentTime = 0;
+  quesAudio.play(); 
   console.log(currentQuestionIndex);
   emoji = document.createElement("img");
   emoji.src = question.emojiImage;
