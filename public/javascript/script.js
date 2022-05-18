@@ -160,6 +160,15 @@ teacherSubmitBtn.addEventListener("click",() => {
   
 });
 
+function submitName() {
+  var inputName = document.getElementById("nameSearchinput");
+  fetch(`/api/users?name=${inputName}`) 
+  .then(response => response.json())
+  .then(data => console.log(data));
+}
+
+nameSearchBtn.addEventListener("click",submitName);
+
 // Check if the input entered is a letter
 function isCharacterALetter(char) {
   return (/[a-zA-Z]/).test(char)

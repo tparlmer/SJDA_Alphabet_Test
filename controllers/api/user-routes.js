@@ -19,6 +19,7 @@ router.get('/', (req, res) => {
       //  console.log(err);
        // res.status(500).json(err)
     //})
+    console.log("req.params",req.params);
     res.send();
     console.log("hello world");
 })
