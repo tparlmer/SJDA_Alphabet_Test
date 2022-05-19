@@ -125,10 +125,8 @@ const questions = [
 //event listener for start button and next button
 startButton.addEventListener("click", startTest);
 nextButton.addEventListener("click", () => {
-
   //Validate user input
-  if(answerBox.value == '') {
-
+  if (answerBox.value == "") {
     emptyInputAudio.play();
   } else if (
     answerBox.value.length != 1 ||
@@ -213,15 +211,13 @@ function checkAnswer(questions) {
 
   // Check for case-insensitive input
   if (questions.correct_answer.toUpperCase() == studentAnswer.toUpperCase()) {
-    console.log('correctanswer');
+    console.log("correctanswer");
     numberCorrect++;
   }
   studentScore.push({
     letter: questions.correct_answer,
     answer: studentAnswer,
   });
-
-  studentScore
   //console.log(studentScore);
   nextButton.classList.remove("hide");
   //const studentScoreString = JSON.stringify(studentScore);
@@ -235,9 +231,9 @@ const sendScore = () => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ 
-      user_id:1,//change this later (dummy data for testing)
-      quizData: studentScore
+    body: JSON.stringify({
+      user_id: 1, //change this later (dummy data for testing)
+      quizData: studentScore,
     }),
   })
     .then((response) => {
