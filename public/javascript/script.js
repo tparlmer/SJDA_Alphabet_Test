@@ -8,6 +8,7 @@ const answerBox = document.getElementById("answer-box");
 var quesAudio = document.getElementById("quesAudio");
 var emptyInputAudio = document.getElementById("emptyInputAudio");
 var letterValidAudio = document.getElementById("letterValidAudio");
+var isFirstQuestion = false;
 
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
@@ -194,9 +195,14 @@ function clearLastImage() {
 
 //Displays question using question array
 function showQuestion(question) {
-  quesAudio.pause();
-  quesAudio.currentTime = 0;
-  quesAudio.play();
+
+  if(!isFirstQuestion) {
+    quesAudio.pause();
+    quesAudio.currentTime = 0;
+    quesAudio.play();
+    isFirstQuestion = true;
+  }
+
   console.log(currentQuestionIndex);
   emoji = document.createElement("img");
   emoji.src = question.emojiImage;
