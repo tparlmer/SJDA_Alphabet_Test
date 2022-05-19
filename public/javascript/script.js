@@ -1,119 +1,123 @@
 const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
 const questionContainerElement = document.getElementById("question-container");
-const questionElement = document.getElementById("question");
+const headerElement = document.getElementById("card-header");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const submitButton = document.getElementById("submit-btn");
 const answerBox = document.getElementById("answer-box");
+var quesAudio = document.getElementById("quesAudio");
+var emptyInputAudio = document.getElementById("emptyInputAudio");
+var letterValidAudio = document.getElementById("letterValidAudio");
 
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
+let numberCorrect = 0;
 let emoji;
 
 //Array of questions with relative file path
 const questions = [
   {
-    emojiImage: "./public/images/apple.svg",
+    emojiImage: "./images/apple.svg",
     correct_answer: "a",
   },
   {
-    emojiImage: "./public/images/bike.svg",
+    emojiImage: "./images/bike.svg",
     correct_answer: "b",
   },
   {
-    emojiImage: "./public/images/cat.svg",
+    emojiImage: "./images/cat.svg",
     correct_answer: "c",
   },
   {
-    emojiImage: "./public/images/duck.svg",
+    emojiImage: "./images/duck.svg",
     correct_answer: "d",
   },
   {
-    emojiImage: "./public/images/egg.svg",
+    emojiImage: "./images/egg.svg",
     correct_answer: "e",
   },
   {
-    emojiImage: "./public/images/fish.svg",
+    emojiImage: "./images/fish.svg",
     correct_answer: "f",
   },
   {
-    emojiImage: "./public/images/goat.svg",
+    emojiImage: "./images/goat.svg",
     correct_answer: "g",
   },
   {
-    emojiImage: "./public/images/house.svg",
+    emojiImage: "./images/house.svg",
     correct_answer: "h",
   },
   {
-    emojiImage: "./public/images/ice.svg",
+    emojiImage: "./images/ice.svg",
     correct_answer: "i",
   },
   {
-    emojiImage: "./public/images/juice.svg",
+    emojiImage: "./images/juice.svg",
     correct_answer: "j",
   },
   {
-    emojiImage: "./public/images/kite.svg",
+    emojiImage: "./images/kite.svg",
     correct_answer: "k",
   },
   {
-    emojiImage: "./public/images/lion.svg",
+    emojiImage: "./images/lion.svg",
     correct_answer: "l",
   },
   {
-    emojiImage: "./public/images/mouse.svg",
+    emojiImage: "./images/mouse.svg",
     correct_answer: "m",
   },
   {
-    emojiImage: "./public/images/nose.svg",
+    emojiImage: "./images/nose.svg",
     correct_answer: "n",
   },
   {
-    emojiImage: "./public/images/octopus.svg",
+    emojiImage: "./images/octopus.svg",
     correct_answer: "o",
   },
   {
-    emojiImage: "./public/images/panda.svg",
+    emojiImage: "./images/panda.svg",
     correct_answer: "p",
   },
   {
-    emojiImage: "./public/images/question.svg",
+    emojiImage: "./images/question.svg",
     correct_answer: "q",
   },
   {
-    emojiImage: "./public/images/rainbow.svg",
+    emojiImage: "./images/rainbow.svg",
     correct_answer: "r",
   },
   {
-    emojiImage: "./public/images/star.svg",
+    emojiImage: "./images/star.svg",
     correct_answer: "s",
   },
   {
-    emojiImage: "./public/images/television.svg",
+    emojiImage: "./images/television.svg",
     correct_answer: "t",
   },
   {
-    emojiImage: "./public/images/umbrella.svg",
+    emojiImage: "./images/umbrella.svg",
     correct_answer: "u",
   },
   {
-    emojiImage: "./public/images/volcano.svg",
+    emojiImage: "./images/volcano.svg",
     correct_answer: "v",
   },
   {
-    emojiImage: "./public/images/watch.svg",
+    emojiImage: "./images/watch.svg",
     correct_answer: "w",
   },
   {
-    emojiImage: "./public/images/x-ray.svg",
+    emojiImage: "./images/x-ray.svg",
     correct_answer: "x",
   },
   {
-    emojiImage: "./public/images/yo-yo.svg",
+    emojiImage: "./images/yo-yo.svg",
     correct_answer: "y",
   },
   {
-    emojiImage: "./public/images/zebra.svg",
+    emojiImage: "./images/zebra.svg",
     correct_answer: "z",
   },
 ];
@@ -121,11 +125,26 @@ const questions = [
 //event listener for start button and next button
 startButton.addEventListener("click", startTest);
 nextButton.addEventListener("click", () => {
-  checkAnswer(shuffledQuestions[currentQuestionIndex]);
-  currentQuestionIndex++;
-  clearLastImage();
-  setNextQuestion();
+  //Validate user input
+  if (answerBox.value == "") {
+    emptyInputAudio.play();
+  } else if (
+    answerBox.value.length != 1 ||
+    !isCharacterALetter(answerBox.value)
+  ) {
+    letterValidAudio.play();
+  } else {
+    checkAnswer(shuffledQuestions[currentQuestionIndex]);
+    currentQuestionIndex++;
+    clearLastImage();
+    setNextQuestion();
+  }
 });
+
+// Check if the input entered is a letter
+function isCharacterALetter(char) {
+  return /[a-zA-Z]/.test(char);
+}
 
 //start test function
 function startTest() {
@@ -137,10 +156,29 @@ function startTest() {
   questionContainerElement.classList.remove("hide");
   setNextQuestion();
 }
+
+const checkEndTest = (currentQuestion) => {
+  //console.log("in test finished", currentQuestionIndex);
+
+  if (currentQuestion == 26) {
+    console.log("test finished");
+    const studentScoreString = JSON.stringify(studentScore);
+    console.log(studentScoreString);
+    return true;
+  } else {
+    console.log("test not finished");
+    return false;
+  }
+};
 //next question function
 function setNextQuestion() {
   resetAnswerBox();
-  showQuestion(shuffledQuestions[currentQuestionIndex]);
+
+  if (checkEndTest(currentQuestionIndex) === false) {
+    showQuestion(shuffledQuestions[currentQuestionIndex]);
+  } else if (checkEndTest(currentQuestionIndex) == true) {
+    endTest();
+  }
 }
 
 //Clears input box
@@ -150,16 +188,19 @@ function resetAnswerBox() {
 
 //Removes previous image
 function clearLastImage() {
-  questionElement.removeChild(emoji);
+  headerElement.removeChild(emoji);
   console.log("image removed");
 }
 
 //Displays question using question array
 function showQuestion(question) {
+  quesAudio.pause();
+  quesAudio.currentTime = 0;
+  quesAudio.play();
   console.log(currentQuestionIndex);
   emoji = document.createElement("img");
   emoji.src = question.emojiImage;
-  questionElement.appendChild(emoji);
+  headerElement.appendChild(emoji);
   answerBox.classList.remove("hide");
   nextButton.classList.remove("hide");
 }
@@ -168,27 +209,51 @@ function showQuestion(question) {
 function checkAnswer(questions) {
   let studentAnswer = document.getElementById("answer-box").value;
 
+  // Check for case-insensitive input
+  if (questions.correct_answer.toUpperCase() == studentAnswer.toUpperCase()) {
+    console.log("correctanswer");
+    numberCorrect++;
+  }
   studentScore.push({
     letter: questions.correct_answer,
     answer: studentAnswer,
   });
-
   //console.log(studentScore);
   nextButton.classList.remove("hide");
   //const studentScoreString = JSON.stringify(studentScore);
   //console.log(studentScoreString);
 }
 
-const endTest = () => {
-  //console.log("in test finished", currentQuestionIndex);
-
-  if (currentQuestionIndex == questions.length - 1) {
-    console.log("test finished");
-    const studentScoreString = JSON.stringify(studentScore);
-    console.log(studentScoreString);
-  } else {
-    console.log("test not working");
-  }
+const sendScore = () => {
+  fetch("/api/quiz", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user_id: 1, //change this later (dummy data for testing)
+      quizData: studentScore,
+    }),
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      alert("Error: " + response.statusText);
+    })
+    .then((postResponse) => {
+      console.log(postResponse);
+      alert("Student score added!");
+    });
 };
 
-endTest();
+const endTest = () => {
+  answerBox.classList.add("hide");
+  nextButton.classList.remove("hide");
+  headerElement.textContent = "Alphabet Test Finished";
+  const scoreBox = document.createElement("div");
+  scoreBox.textContent = numberCorrect + " Out of 26 Correct";
+  headerElement.appendChild(scoreBox);
+  sendScore();
+};
