@@ -13,6 +13,7 @@ var quesAudio = document.getElementById("quesAudio");
 var emptyInputAudio = document.getElementById("emptyInputAudio");
 var letterValidAudio = document.getElementById("letterValidAudio");
 var table = document.getElementById("quiztable");
+var isFirstQuestion = false;
 
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
@@ -132,13 +133,21 @@ startButton.addEventListener("click", startTest);
 nextButton.addEventListener("click", () => {
   //Validate user input
   if (answerBox.value == "") {
+    emptyInputAudio.pause();
+    emptyInputAudio.currentTime = 0;
     emptyInputAudio.play();
   } else if (
     answerBox.value.length != 1 ||
     !isCharacterALetter(answerBox.value)
   ) {
+    letterValidAudio.pause();
+    letterValidAudio.currentTime = 0;
     letterValidAudio.play();
   } else {
+    emptyInputAudio.pause();
+    emptyInputAudio.currentTime = 0;
+    letterValidAudio.pause();
+    letterValidAudio.currentTime = 0;
     checkAnswer(shuffledQuestions[currentQuestionIndex]);
     currentQuestionIndex++;
     clearLastImage();
@@ -268,9 +277,13 @@ function clearLastImage() {
 
 //Displays question using question array
 function showQuestion(question) {
-  quesAudio.pause();
-  quesAudio.currentTime = 0;
-  quesAudio.play();
+
+  if(!isFirstQuestion) {
+    quesAudio.pause();
+    quesAudio.currentTime = 0;
+    quesAudio.play();
+    isFirstQuestion = true;
+  }
   console.log(currentQuestionIndex);
   emoji = document.createElement("img");
   emoji.src = question.emojiImage;
