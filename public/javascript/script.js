@@ -244,7 +244,7 @@ const sendScore = () => {
     })
     .then((postResponse) => {
       console.log(postResponse);
-      alert("Student score added!");
+      //alert("Student score added!");
     });
 };
 
