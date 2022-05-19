@@ -55,35 +55,48 @@
 
               <!--Name Search-->
               <div class="nameSearchDiv">
-                <div class="nameSerchInputDiv">
-                  <input type="search" id="nameSearchinput" class="form-control" />
-                  <label class="form-label" for="form1">Search</label>
-                </div>
+                <!--First Name Search-->
                 <div>
-                  <button type="button" id="nameSearchBtn" class="btn btn-outline-primary">search</button>
+                  <div class="nameSerchInputDiv">
+                    <input type="search" id="firstnameSearchinput" class="form-control" placeholder="Enter First Name"/>
+                    <input type="search" id="lastnameSearchinput" class="form-control" placeholder="Enter Last Name"/>
+                  </div>
+                  <div>
+                    <button type="button" id="nameSearchBtn" class="btn btn-outline-primary">Search</button>
+                  </div>
                 </div>
+
+                <!--Last Name Search-->
+                <!--div>
+                  <div class="lastnameSerchInputDiv">
+                    <input type="search" id="lastnameSearchinput" class="form-control" placeholder="Enter Last Name"/>
+                  </div>
+                  <div>
+                    <button type="button" id="lastnameSearchBtn" class="btn btn-outline-primary">search</button>
+                  </div>
+                </div-->
               </div>
 
               <!--Data Search-->
-              <div class="dateSearchDiv">
+              <!--div class="dateSearchDiv">
                 <div class="dateSerchInputDiv">
-                  <input type="search" id="dateSearchinput" class="form-control" />
+                  <input type="search" id="dateSearchinput" class="form-control" placeholder="Enter Date"/>
                   <label class="form-label" for="form1">Search</label>
                 </div>
                 <button type="button" id="dateSearchBtn" class="btn btn-outline-primary">search</button>
 
-          </div>
+              </div-->
 
-          <table class="table">
+          <table class="table" id="quiztable">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Id</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Grade</th>
               </tr>
             </thead>
-            <tbody>
+            <!--tbody>
               <tr>
                 <th scope="row">1</th>
                 <td>Mark</td>
@@ -102,7 +115,7 @@
                 <td>the Bird</td>
                 <td>@twitter</td>
               </tr>
-            </tbody>
+            </tbody-->
           </table>
         </div>
       </div>

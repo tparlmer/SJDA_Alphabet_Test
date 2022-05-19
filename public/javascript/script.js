@@ -12,6 +12,7 @@ const answerBox = document.getElementById("answer-box");
 var quesAudio = document.getElementById("quesAudio");
 var emptyInputAudio = document.getElementById("emptyInputAudio");
 var letterValidAudio = document.getElementById("letterValidAudio");
+var table = document.getElementById("quiztable");
 
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
@@ -162,14 +163,56 @@ teacherSubmitBtn.addEventListener("click",() => {
   
 });
 
-function submitName() {
-  var inputName = document.getElementById("nameSearchinput");
-  fetch(`/api/users?name=${inputName}`) 
+// Get saved quiz from database
+function searchByName() {
+  var firstname = document.getElementById("firstnameSearchinput").value;
+  var lastname = document.getElementById("lastnameSearchinput").value;
+  var queryParam;
+
+  console.log('firstname',firstname);
+  console.log('lastname',lastname);
+
+  if(firstname) {
+    queryParam = '/api/data?firstname='+firstname ;
+  } 
+  if(lastname) {
+    if(!firstname) {
+      window.alert('Please enter first name');
+    } else {
+      queryParam = '/api/data?firstname='+firstname+'&lastname='+lastname;
+    }   
+  }
+  console.log('queryParam',queryParam);
+
+  fetch("/api/users") 
   .then(response => response.json())
-  .then(data => console.log(data));
+  .then(data => {
+    console.log('data',data,data.length);
+    for(i=0;i<data.length;i++) {
+			var rowCount = table.rows.length;
+			var row = table.insertRow(rowCount);
+
+     // Cell 1
+      var cell1 = row.insertCell(0);
+			cell1.innerHTML = data[i].id;
+
+      // Cell 2
+      var cell2 = row.insertCell(0);
+			cell2.innerHTML = data[i].firstname;
+
+      // Cell 3
+      var cell3 = row.insertCell(0);
+			cell3.innerHTML = data[i].lastname;
+
+      // Cell 4
+      var cell4 = row.insertCell(0);
+			cell4.innerHTML = data[i].grade;
+    }
+  });
 }
 
-nameSearchBtn.addEventListener("click",submitName); 
+// Saved quiz search
+nameSearchBtn.addEventListener("click",searchByName); 
 
 // Check if the input entered is a letter
 function isCharacterALetter(char) {

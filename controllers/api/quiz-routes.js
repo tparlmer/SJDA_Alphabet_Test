@@ -5,12 +5,22 @@ const { Quiz } = require("../../models");
 
 // TODO: Add CRUD operations for Quiz routes
 
-// GET request can send data to the frontend, but cannot collect it
 // GET /api/quiz
-router.get("/", (req, res) => {
-  // gets quizzes of every user in the database
-  console.log("test GET api/quiz");
-  res.json();
+// This route is to get saved quiz data 
+router.get("/quiz", (req, res) => {
+  
+  const sql = `SELECT * FROM quiz WHERE firstname = colin`;
+
+  Quiz.query(sql, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: rows,
+    });
+  });
 });
 
 // GET /api/quiz/1
