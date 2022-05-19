@@ -250,7 +250,7 @@ const sendScore = () => {
 
 const endTest = () => {
   answerBox.classList.add("hide");
-  nextButton.classList.remove("hide");
+  nextButton.classList.add("hide");
   headerElement.textContent = "Alphabet Test Finished";
   const scoreBox = document.createElement("div");
   scoreBox.textContent = numberCorrect + " Out of 26 Correct";
