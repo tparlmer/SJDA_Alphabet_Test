@@ -40,7 +40,7 @@ const helpers = require("./utils/helpers");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, "/")));
+app.use(express.static(path.join(__dirname, "/public")));
 //set view engine to ejs
 app.set('view engine', 'ejs');
 
