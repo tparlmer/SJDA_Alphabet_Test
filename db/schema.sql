@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS alphabet_test_db;
+DROP DATABASE IF EXISTS sjda_alphabet_test_db;
 
-CREATE DATABASE alphabet_test_db;
+CREATE DATABASE sjda_alphabet_test_db;
