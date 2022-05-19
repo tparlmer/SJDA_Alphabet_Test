@@ -7,6 +7,35 @@
 
 json -> sql database
 
+// Letters and Pictures
+// A - apple
+// B 
+// C 
+// D 
+// E 
+// F 
+// G 
+// H 
+// I 
+// J 
+// K 
+// L 
+// M 
+// N 
+// O 
+// P 
+// Q 
+// R 
+// S 
+// T 
+// U 
+// V 
+// W 
+// X 
+// Y
+// Z
+
+
 //Routes
     // username POST request (reference just tech news)
     // templates GET request (to load page on frontend)
@@ -17,3 +46,27 @@ json -> sql database
     // 26 full screen cards of alphabet prompts
 
 // Google Sheets API
+
+
+// Issues
+    //1 frontend
+        // audio
+        // html
+        // css
+        // static js files (form submission, dom manipulation)
+    //2 routing
+        // api Routes
+        // html routes (templating)
+    //3 database
+        // initiliaze / seed a database
+        // setup sequelize
+        // models
+    //4 templating
+    //5 authentication
+    //6 google sheets api
+
+Prototype
+-html/css/js quiz w/ no templating
+-working database
+-basic routing
+MVP

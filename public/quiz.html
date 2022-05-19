@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Alphabet Quiz</title>
+  </head>
+  <body>
+    <!--Audio for the prompt-->
+    <audio id="quesAudio">
+      <source src="./public/audioFile.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <audio id="emptyInputAudio">
+      <source src="./public/validationAudio.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <audio id="letterValidAudio">
+      <source src="./public/validateInputLetterAudio.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+      <div id="question-container" class="hide">
+        <div id="card-header">What letter does the image start with?</div>
+        <!--Emoji Image dynamically generated here-->
+      </div>
+      <!--Input Box-->
+      <input type="text" id="answer-box" class="hide" />
+
+      <!---Control Buttons-->
+      <div class="controls">
+        <button id="start-btn" class="start-btn btn">Start</button>
+        <button id="next-btn" class="next-btn btn hide">Next</button>
+      </div>
+    </div>
+
+    <script src="./javascript/script.js"></script>
+  </body>
+</html>
