@@ -18,14 +18,10 @@
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.0",
     "handlebars": "^4.7.3",
-    "mysql2": "^2.1.0",
+    "mysql2": "^2.3.3",
     "sequelize": "^5.21.5"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "jest": "^28.1.0"
-  }
-=======
     "jest": "^25.1.0"
   },
   "repository": {
@@ -37,5 +33,4 @@
     "url": "https://github.com/tparlmer/SJDA_Alphabet_Test/issues"
   },
   "homepage": "https://github.com/tparlmer/SJDA_Alphabet_Test#readme"
->>>>>>> e4d0782acd1c55e8a1d95bde2c3d197d15d8cd70
 }

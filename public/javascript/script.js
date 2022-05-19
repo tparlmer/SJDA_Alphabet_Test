@@ -171,7 +171,7 @@ function submitName() {
   .then(data => console.log(data));
 }
 
-nameSearchBtn.addEventListener("click",submitName);
+nameSearchBtn.addEventListener("click",submitName); 
 
 // Check if the input entered is a letter
 function isCharacterALetter(char) {
@@ -252,7 +252,6 @@ function checkAnswer(questions) {
     answer: studentAnswer,
   });
 
-  studentScore
   //console.log(studentScore);
   nextButton.classList.remove("hide");
   //const studentScoreString = JSON.stringify(studentScore);
