@@ -48,6 +48,10 @@ app.set('view engine', 'ejs');
 app.get('/', function(req, res) {
   res.render('pages/index');
 });
+//login page
+app.get('/', function(req, res) {
+  res.render('pages/login');
+});
 
 
 // node reference to controllers folder
