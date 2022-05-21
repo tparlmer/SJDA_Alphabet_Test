@@ -14,6 +14,7 @@ var emptyInputAudio = document.getElementById("emptyInputAudio");
 var letterValidAudio = document.getElementById("letterValidAudio");
 var table = document.getElementById("quiztable");
 var isFirstQuestion = false;
+var stFirstName, stLastName;
 
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
@@ -176,48 +177,103 @@ teacherSubmitBtn.addEventListener("click",() => {
 function searchByName() {
   var firstname = document.getElementById("firstnameSearchinput").value;
   var lastname = document.getElementById("lastnameSearchinput").value;
-  var queryParam;
+  var queryParam = '';
 
   console.log('firstname',firstname);
   console.log('lastname',lastname);
 
   if(firstname) {
-    queryParam = '/api/data?firstname='+firstname ;
+    queryParam = '?firstname='+firstname ;
   } 
   if(lastname) {
     if(!firstname) {
       window.alert('Please enter first name');
     } else {
-      queryParam = '/api/data?firstname='+firstname+'&lastname='+lastname;
+      queryParam = '?firstname='+firstname+'&lastname='+lastname;
     }   
+  } 
+
+  if(!firstname && !lastname) {
+    queryParam = '' ;
   }
   console.log('queryParam',queryParam);
 
-  fetch("/api/users") 
-  .then(response => response.json())
+  fetch(`/api/users${queryParam}`,{
+    method: "GET"
+  }) 
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    alert("Error: " + response.statusText);
+  })
   .then(data => {
-    console.log('data',data,data.length);
+    console.log('data',data);
     for(i=0;i<data.length;i++) {
-			var rowCount = table.rows.length;
-			var row = table.insertRow(rowCount);
+      console.log('data',data.id);
+      var rowCount = table.rows.length;
+      var row = table.insertRow(rowCount);
 
      // Cell 1
       var cell1 = row.insertCell(0);
-			cell1.innerHTML = data[i].id;
+      cell1.innerHTML = data[i].id;
 
       // Cell 2
       var cell2 = row.insertCell(0);
-			cell2.innerHTML = data[i].firstname;
+      cell2.innerHTML = data[i].firstname;
 
       // Cell 3
       var cell3 = row.insertCell(0);
-			cell3.innerHTML = data[i].lastname;
+      cell3.innerHTML = data[i].lastname;
 
       // Cell 4
       var cell4 = row.insertCell(0);
-			cell4.innerHTML = data[i].grade;
+      cell4.innerHTML = data[i].created_at;
     }
   });
+ /* .then(data => {
+    console.log('datafromuser',data);
+    if(data != null && data.length > 0) {
+      stFirstName = data[0].firstname;
+      stLastName = data[0].lastname;
+      fetch(`/api/quiz/${data[0].id}`,{
+        method: "GET"
+      })  
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        alert("Error: " + response.statusText);
+      })
+      .then(data => {
+        console.log('data',data);
+        for(i=0;i<data.length;i++) {
+          var rowCount = table.rows.length;
+          var row = table.insertRow(rowCount);
+    
+         // Cell 1
+          var cell1 = row.insertCell(0);
+          cell1.innerHTML = data[i].id;
+    
+          // Cell 2
+          var cell2 = row.insertCell(0);
+          cell2.innerHTML = stFirstName;
+    
+          // Cell 3
+          var cell3 = row.insertCell(0);
+          cell3.innerHTML = stLastName;
+    
+          // Cell 4
+          var cell4 = row.insertCell(0);
+          cell4.innerHTML = data[i].created_at;
+        }
+      });
+    } else{
+      console.log('No matching user records found');
+    }
+   
+  }) */
+ 
 }
 
 // Saved quiz search

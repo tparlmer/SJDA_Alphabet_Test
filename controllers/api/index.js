@@ -5,6 +5,6 @@ const userRoutes = require('./user-routes');
 // specifies routes for the api
 router.use('/quiz', quizRoutes)
 router.use('/users', userRoutes)
-router.use('/data', quizRoutes)
 
 module.exports = router;
+

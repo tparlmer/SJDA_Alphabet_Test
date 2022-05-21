@@ -3,32 +3,45 @@
 const router = require("express").Router();
 const { Quiz } = require("../../models");
 
-// TODO: Add CRUD operations for Quiz routes
 
 // GET /api/quiz
 // This route is to get saved quiz data 
-router.get("/quiz", (req, res) => {
-  
-  const sql = `SELECT * FROM quiz WHERE firstname = colin`;
+router.get("/", (req, res) => {
+  res.json();
+ // console.log('req.query',req.query);
 
-  Quiz.query(sql, (err, rows) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-      return;
-    }
-    res.json({
-      message: 'success',
-      data: rows,
-    });
-  });
+ /* Quiz.findAll({
+    where: { user_id: req.query.id },  
+  })
+  .then((dbUserData) => {
+    console.log('dbUserData',dbUserData);
+   res.json(dbUserData);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  }); */
 });
+
 
 // GET /api/quiz/1
 router.get("/:id", (req, res) => {
-  // gets a specific quiz
-  // figure out how to tell database that the student has completed a specific quiz
-  console.log("test GET api/quiz/id");
-  res.send();
+  
+  console.log('req.query',req.params.id);
+  var reqid = req.params.id;
+
+  Quiz.findAll({
+    where: { user_id: reqid},  
+  })
+  .then((dbUserData) => {
+    console.log('dbUserData',dbUserData);
+   res.json(dbUserData);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+
 });
 
 // POST /api/quiz
