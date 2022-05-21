@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/css/login.css">
+    <link rel="stylesheet" href="./css/login.css">
     <title>Document</title>
 </head>
 <body>
@@ -22,15 +22,19 @@
     <!--STUDENT LOGIN-->
     <div id="show-student-login">
         <div class="container">
-            <form class="form" id="login">
-                <h1 class="form-title">Login</h1>
+            <form class="student-form" id="login">
+                <h1 class="form-title">Student Login</h1>
                 <div class="form-message form-message-error"></div>
                 <div class="form-input-group">
-                    <input type="text" class="form-input" autofocus placeholder="firstname">
+                    <input type="text" class="form-input" id="firstname-login" autofocus placeholder="First Name">
                     <div class="form-input-error-message"></div>
                 </div>
                 <div class="form-input-group">
-                    <input type="password" class="form-input" autofocus placeholder="lastname">
+                    <input type="text" class="form-input" id="lastname-login" autofocus placeholder="Last Name">
+                    <div class="form-input-error-message"></div>
+                </div>
+                <div class="form-input-group">
+                    <input type="password" class="form-input" id="password-login" autofocus placeholder="5 letter password">
                     <div class="form-input-error-message"></div>
                 </div>
                 <button class="form-button" type="submit">Continue</button>
@@ -53,7 +57,7 @@
                     <div class="form-input-error-message"></div>
                 </div>
                 <div class="form-input-group">
-                    <input type="password" class="form-input" autofocus placeholder="Confirm lastname">
+                    <input type="password" class="form-input" autofocus placeholder="Confirm Last Name">
                     <div class="form-input-error-message"></div>
                 </div>
                 <button class="form-button" type="submit">Continue</button>
@@ -68,18 +72,22 @@
     <!--TEACHER LOGIN-->
     <div id="show-teacher-login">
         <div class="container">
-            <form class="form" id="login">
-                <h1 class="form-title">Login</h1>
+            <form class="teacher-form" id="login">
+                <h1 class="form-title">Teacher Login</h1>
                 <div class="form-message form-message-error"></div>
                 <div class="form-input-group">
-                    <input type="text" class="form-input" autofocus placeholder="firstname">
+                    <input type="text" class="form-input" id="firstname-login-teacher" autofocus placeholder="First Name">
                     <div class="form-input-error-message"></div>
                 </div>
                 <div class="form-input-group">
-                    <input type="password" class="form-input" autofocus placeholder="lastname">
+                    <input type="text" class="form-input" id="lastname-login-teacher" autofocus placeholder="Last Name">
                     <div class="form-input-error-message"></div>
                 </div>
-                <button class="form-button" type="submit">Continue</button>
+                <div class="form-input-group">
+                    <input type="password" class="form-input" id="password-login-teacher" autofocus placeholder="5 letter password">
+                    <div class="form-input-error-message"></div>
+                </div>
+                <button class="form-button" type="submit">Submit</button>
                 <p class="form-text">
                     <a href="#" class="form-link">Wrong password?</a>
                 </p>
@@ -109,6 +117,6 @@
             </form>
         </div>
     </div>
-    <script src="./public/javascript/login.js"></script>
+    <script src="./javascript/login.js"></script>
 </body>
 </html>

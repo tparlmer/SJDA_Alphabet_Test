@@ -24,106 +24,107 @@ let emoji;
 //Array of questions with relative file path
 const questions = [
   {
-    emojiImage: "./images/apple.svg",
+    emojiImage: "/images/apple.svg",
     correct_answer: "a",
   },
   {
-    emojiImage: "./images/bike.svg",
+    emojiImage: "/images/bike.svg",
     correct_answer: "b",
   },
   {
-    emojiImage: "./images/cat.svg",
+    emojiImage: "/images/cat.svg",
     correct_answer: "c",
   },
   {
-    emojiImage: "./images/duck.svg",
+    emojiImage: "/images/duck.svg",
     correct_answer: "d",
   },
   {
-    emojiImage: "./images/egg.svg",
+    emojiImage: "/images/egg.svg",
     correct_answer: "e",
   },
   {
-    emojiImage: "./images/fish.svg",
+    emojiImage: "/images/fish.svg",
     correct_answer: "f",
   },
   {
-    emojiImage: "./images/goat.svg",
+    emojiImage: "/images/goat.svg",
     correct_answer: "g",
   },
   {
-    emojiImage: "./images/house.svg",
+    emojiImage: "/images/house.svg",
     correct_answer: "h",
   },
   {
-    emojiImage: "./images/ice.svg",
+    emojiImage: "/images/ice.svg",
     correct_answer: "i",
   },
   {
-    emojiImage: "./images/juice.svg",
+    emojiImage: "/images/juice.svg",
     correct_answer: "j",
   },
   {
-    emojiImage: "./images/kite.svg",
+    emojiImage: "/images/kite.svg",
     correct_answer: "k",
   },
   {
-    emojiImage: "./images/lion.svg",
+    emojiImage: "/images/lion.svg",
     correct_answer: "l",
   },
   {
-    emojiImage: "./images/mouse.svg",
+    emojiImage: "/images/mouse.svg",
     correct_answer: "m",
   },
   {
-    emojiImage: "./images/nose.svg",
+    emojiImage: "/images/nose.svg",
     correct_answer: "n",
   },
   {
-    emojiImage: "./images/octopus.svg",
+    emojiImage: "/images/octopus.svg",
     correct_answer: "o",
   },
   {
-    emojiImage: "./images/panda.svg",
+    emojiImage: "/images/panda.svg",
     correct_answer: "p",
   },
   {
-    emojiImage: "./images/question.svg",
+    emojiImage: "/images/question.svg",
     correct_answer: "q",
   },
   {
-    emojiImage: "./images/rainbow.svg",
+    emojiImage: "/images/rainbow.svg",
     correct_answer: "r",
   },
   {
-    emojiImage: "./images/star.svg",
+    emojiImage: "/images/star.svg",
     correct_answer: "s",
   },
   {
-    emojiImage: "./images/teleconst users = await User.findAll({ include: Quizzes })"
+    emojiImage: "/images/television.svg",
+    correct_answer: "t"
   },
   {
-    emojiImage: "./images/umbrella.svg",
+    emojiImage: "/images/umbrella.svg",
     correct_answer: "u",
   },
   {
-    emojiImage: "./images/volcano.svg",
+    emojiImage: "/images/volcano.svg",
     correct_answer: "v",
   },
   {
-    emojiImage: "./images/watch.svg",
+    emojiImage: "/images/watch.svg",
     correct_answer: "w",
   },
   {
-    emojiImage: "./images/x-ray.svg",
+    emojiImage: "/images/x-ray.svg",
     correct_answer: "x",
   },
   {
-    emojiImage: "./images/yo-yo.svg",
+    emojiImage: "/images/yo-yo.svg",
     correct_answer: "y",
   },
   {
-    emojiImage: "./images/zebra.svg",
+    emojiImage: "/images/zebra.svg",
     correct_answer: "z",
   },
 ];

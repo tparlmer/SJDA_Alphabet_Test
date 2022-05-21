@@ -18,7 +18,6 @@ function studentLoginClick() {
 //     showStudentLogin.style.display = "none";
 //   }
 }
-
 teacherLoginButton.addEventListener("click", teacherLoginClick);
 function teacherLoginClick() {
   console.log("i clicked something");
@@ -31,6 +30,65 @@ function teacherLoginClick() {
 //     showTeacherLogin.style.display = "none";
 //   }
 }
+async function loginStudentHandler(event) {
+    event.preventDefault();
+  
+    const firstname = document.querySelector('#firstname-login').value.trim();
+    const lastname = document.querySelector('#lastname-login').value.trim();
+    const password = document.querySelector('#password-login').value.trim();
+  
+    if (firstname && lastname && password) {
+      const response = await fetch('/api/users/login', {
+        method: 'post',
+        body: JSON.stringify({
+          firstname,
+          lastname,
+          role:"student",
+          password
+        }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+  
+      if (response.ok) {
+        console.log("you are now logged in");
+        //We need to have this go to the start quiz.ejs file
+        document.location.replace('/startquiz/')
+      } else {
+        alert(response.statusText);
+      }
+    }
+  }
+  document.querySelector('.student-form').addEventListener('submit', loginStudentHandler);
+
+  async function loginTeacherHandler(event) {
+    event.preventDefault();
+  
+    const firstname = document.querySelector('#firstname-login-teacher').value.trim();
+    const lastname = document.querySelector('#lastname-login-teacher').value.trim();
+    const password = document.querySelector('#password-login-teacher').value.trim();
+  
+    if (firstname && lastname && password) {
+      const response = await fetch('/api/users/login', {
+        method: 'post',
+        body: JSON.stringify({
+          firstname,
+          lastname,
+          role:"teacher",
+          password
+        }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+  
+      if (response.ok) {
+        console.log("you are now logged in");
+        window.alert("The teacher is now logged in please route to dashboard via render on the server.js file see start quiz for example")
+        //render teacher dashboard html
+      } else {
+        alert(response.statusText);
+      }
+    }
+  }
+  document.querySelector('.teacher-form').addEventListener('submit', loginTeacherHandler);
 
 function setFormMessage(formElement, type, message) {
   const messageElement = formElement.querySelector(".form-message");

@@ -126,15 +126,16 @@ router.post("/login", (req, res) => {
   });
 });
 
+//Saving PUT and Delete Routes for a later date
 // PUT /api/users/1
-router.put("/:id", (req, res) => {
-  // This route is for modyfing a specific user with a specific user id in the user table
-});
+// router.put("/:id", (req, res) => {
+//   // This route is for modyfing a specific user with a specific user id in the user table
+// });
 
-// DELETE /api/users/1
-router.delete("/:id", (req, res) => {
-  // This route deletes a specific user in the user table
-});
+// // DELETE /api/users/1
+// router.delete("/:id", (req, res) => {
+//   // This route deletes a specific user in the user table
+// });
 
 // must export rotuer for the file/ routes to be readable - like a return statement in a function
 module.exports = router;

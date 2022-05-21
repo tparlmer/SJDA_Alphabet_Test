@@ -45,8 +45,12 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.set('view engine', 'ejs');
 
 //index page
+
 app.get('/', function(req, res) {
-  res.render('pages/index');
+  res.render('pages/login');
+});
+app.get('/startquiz/', function(req, res) {
+  res.render('pages/startquiz');
 });
 
 
