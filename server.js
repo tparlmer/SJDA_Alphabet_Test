@@ -34,11 +34,21 @@ const helpers = require("./utils/helpers");
 //app.engine("handlebars", hbs.engine);
 //app.set("view engine", "handlebars");
 
+//NEED TO SET UP res.render ROUTE
+
 // call express
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static("public"));
-app.use(express.static(path.join(__dirname, "public")));
+
+app.use(express.static(path.join(__dirname, "/public")));
+//set view engine to ejs
+app.set('view engine', 'ejs');
+
+//index page
+app.get('/', function(req, res) {
+  res.render('pages/index');
+});
+
 
 // node reference to controllers folder
 app.use(require("./controllers/"));

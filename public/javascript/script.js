@@ -387,13 +387,13 @@ const sendScore = () => {
     })
     .then((postResponse) => {
       console.log(postResponse);
-      alert("Student score added!");
+      //alert("Student score added!");
     });
 };
 
 const endTest = () => {
   answerBox.classList.add("hide");
-  nextButton.classList.remove("hide");
+  nextButton.classList.add("hide");
   headerElement.textContent = "Alphabet Test Finished";
   const scoreBox = document.createElement("div");
   scoreBox.textContent = numberCorrect + " Out of 26 Correct";
