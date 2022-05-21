@@ -5,13 +5,13 @@ const userdata = [
     {  
         firstname:'colin',
         lastname:'christoph',
-        grade: '12',
+        role: 'student',
         password:'abc' 
     },
     {  
         firstname:'craig',
         lastname:'lenovo',
-        grade: '12',
+        role: 'teacher',
         password:'abcd' 
     }
 ]

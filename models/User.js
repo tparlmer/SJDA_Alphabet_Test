@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
+const { TestWatcher } = require('jest');
 
 class User extends Model {
     //Checks password per user
@@ -33,9 +34,12 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        grade: {
-            type: DataTypes.INTEGER,
+        role: {
+            type: DataTypes.STRING,
             allowNull: false,
+            // validate: {
+            //     is: ["teacher","student"]
+            // }
         },
         password: {
             type: DataTypes.STRING,

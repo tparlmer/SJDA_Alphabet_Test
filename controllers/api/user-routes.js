@@ -21,9 +21,9 @@ router.get("/", (req, res) => {
   }
 
    User.findAll({
-    include: [{
-      model: Quiz
-    }],
+     include: [{
+       model: Quiz
+     }],
     attributes: { exclude: ["password"] },
     where: whereQuery,
   })
@@ -71,18 +71,18 @@ router.get("/:id", (req, res) => {
 
 // POST /api/users
 router.post("/", (req, res) => {
-  // expects {firstname: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
-    grade: req.body.grade,
+    role: req.body.role,
     password: req.body.password,
   })
     .then((dbUserData) => {
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
-        req.body.firstname = dbUserData.firstname;
+        req.session.firstname = dbUserData.firstname;
         req.session.lastname = dbUserData.lastname;
+        req.session.role = dbUserData.role;
         req.session.loggedIn = true;
       });
     })
@@ -95,11 +95,11 @@ router.post("/", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
     where: {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
+      role: req.body.role
     },
   }).then((dbUserData) => {
     if (!dbUserData) {
@@ -118,6 +118,7 @@ router.post("/login", (req, res) => {
       req.session.user_id = dbUserData.id;
       req.session.firstname = dbUserData.firstname;
       req.session.lastname = dbUserData.lastname;
+      req.session.role = dbUserData.role;
       req.session.loggedIn = true;
 
       res.json({ user: dbUserData, message: "You are now logged in!" });
