@@ -3,22 +3,45 @@
 const router = require("express").Router();
 const { Quiz } = require("../../models");
 
-// TODO: Add CRUD operations for Quiz routes
 
-// GET request can send data to the frontend, but cannot collect it
 // GET /api/quiz
+// This route is to get saved quiz data 
 router.get("/", (req, res) => {
-  // gets quizzes of every user in the database
-  console.log("test GET api/quiz");
   res.json();
+ // console.log('req.query',req.query);
+
+ /* Quiz.findAll({
+    where: { user_id: req.query.id },  
+  })
+  .then((dbUserData) => {
+    console.log('dbUserData',dbUserData);
+   res.json(dbUserData);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  }); */
 });
+
 
 // GET /api/quiz/1
 router.get("/:id", (req, res) => {
-  // gets a specific quiz
-  // figure out how to tell database that the student has completed a specific quiz
-  console.log("test GET api/quiz/id");
-  res.send();
+  
+  console.log('req.query',req.params.id);
+  var reqid = req.params.id;
+
+  Quiz.findAll({
+    where: { user_id: reqid},  
+  })
+  .then((dbUserData) => {
+    console.log('dbUserData',dbUserData);
+   res.json(dbUserData);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+
 });
 
 // POST /api/quiz
