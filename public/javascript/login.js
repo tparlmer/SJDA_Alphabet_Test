@@ -1,9 +1,43 @@
-function setFormMessage(formElement, type, message) {
-    const messageElement = formElement.querySelector('.form-message');
+const studentLoginButton = document.getElementById("student-login-button");
+const teacherLoginButton = document.getElementById("teacher-login-button");
+var showStudentLogin = document.getElementById("show-student-login");
+var showTeacherLogin = document.getElementById("show-teacher-login");
 
-    messageElement.textContent = message;
-    messageElement.classList.remove('form-message-success', 'form-message-error');
-    messageElement.classList.add(`form-message-${type}`);
+showTeacherLogin.style.display = "none";
+showStudentLogin.style.display = "none";
+
+studentLoginButton.addEventListener("click", studentLoginClick);
+function studentLoginClick() {
+  console.log("i clicked something");
+  showStudentLogin.style.display = "block";
+  studentLoginButton.style.display = "none";
+  teacherLoginButton.style.display = "none";
+//   if (showStudentLogin.style.display === "none") {
+//     showStudentLogin.style.display = "block";
+//   } else {
+//     showStudentLogin.style.display = "none";
+//   }
+}
+
+teacherLoginButton.addEventListener("click", teacherLoginClick);
+function teacherLoginClick() {
+  console.log("i clicked something");
+  showTeacherLogin.style.display = "block";
+  teacherLoginButton.style.display = "none";
+  studentLoginButton.style.display = "none";
+//   if (showTeacherLogin.style.display === "none") {
+//     showTeacherLogin.style.display = "block";
+//   } else {
+//     showTeacherLogin.style.display = "none";
+//   }
+}
+
+function setFormMessage(formElement, type, message) {
+  const messageElement = formElement.querySelector(".form-message");
+
+  messageElement.textContent = message;
+  messageElement.classList.remove("form-message-success", "form-message-error");
+  messageElement.classList.add(`form-message-${type}`);
 }
 /*
 function setInputError(inputElement, message) {
@@ -13,23 +47,25 @@ function setInputError(inputElement, message) {
 
 setFormMessage(loginForm, 'success', 'You are logged in:)');
 */
-document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.querySelector('#login');
-    const createAccountForm = document.querySelector('#create-account');
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.querySelector("#login");
+  const createAccountForm = document.querySelector("#create-account");
 
-    document.querySelector('#link-create-account').addEventListener('click', e => {
-        e.preventDefault();
-        loginForm.classList.add('form-hidden');
-        createAccountForm.classList.remove('form-hidden');
+  document
+    .querySelector("#link-create-account")
+    .addEventListener("click", (e) => {
+      e.preventDefault();
+      loginForm.classList.add("form-hidden");
+      createAccountForm.classList.remove("form-hidden");
     });
 
-    document.querySelector('#link-login').addEventListener('click', e => {
-        e.preventDefault();
-        loginForm.classList.remove('form-hidden');
-        createAccountForm.classList.add('form-hidden');
-    });
+  document.querySelector("#link-login").addEventListener("click", (e) => {
+    e.preventDefault();
+    loginForm.classList.remove("form-hidden");
+    createAccountForm.classList.add("form-hidden");
+  });
 
-   /* loginForm.addEventListener('submit', e => {
+  /* loginForm.addEventListener('submit', e => {
         e.preventDefault();
 
         //perform your login
@@ -44,4 +80,4 @@ document.addEventListener('DOMContentLoaded', () => {
         //})
     //})
     */
-})
+});

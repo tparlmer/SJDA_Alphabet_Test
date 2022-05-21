@@ -12,13 +12,9 @@ const answerBox = document.getElementById("answer-box");
 var quesAudio = document.getElementById("quesAudio");
 var emptyInputAudio = document.getElementById("emptyInputAudio");
 var letterValidAudio = document.getElementById("letterValidAudio");
-<<<<<<< HEAD
-var isFirstQuestion = false;
-=======
 var table = document.getElementById("quiztable");
 var isFirstQuestion = false;
 var stFirstName, stLastName;
->>>>>>> 91a88e8c31636ba9b30fa9dc8f39a30878bb6eb8
 
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
@@ -104,8 +100,7 @@ const questions = [
     correct_answer: "s",
   },
   {
-    emojiImage: "./images/television.svg",
-    correct_answer: "t",
+    emojiImage: "./images/teleconst users = await User.findAll({ include: Quizzes })"
   },
   {
     emojiImage: "./images/umbrella.svg",
@@ -344,10 +339,6 @@ function showQuestion(question) {
     quesAudio.play();
     isFirstQuestion = true;
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> 91a88e8c31636ba9b30fa9dc8f39a30878bb6eb8
   console.log(currentQuestionIndex);
   emoji = document.createElement("img");
   emoji.src = question.emojiImage;
