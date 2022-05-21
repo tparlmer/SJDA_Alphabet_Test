@@ -384,7 +384,7 @@ const sendScore = () => {
     },
     body: JSON.stringify({
       user_id: 1, //change this later (dummy data for testing)
-      quizData: studentScore,
+      quizData: studentScore
     }),
   })
     .then((response) => {
