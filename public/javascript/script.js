@@ -1,6 +1,10 @@
 const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
+const loginButton = document.getElementById("login-btn");
 const questionContainerElement = document.getElementById("question-container");
+const teacherLoginElement = document.getElementById("teacherlogin");
+const teacherLoginConElement = document.getElementById("teacherlogin-container");
+const resDashboardConElement = document.getElementById("resDashboard-container");
 const headerElement = document.getElementById("card-header");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const submitButton = document.getElementById("submit-btn");
@@ -8,6 +12,9 @@ const answerBox = document.getElementById("answer-box");
 var quesAudio = document.getElementById("quesAudio");
 var emptyInputAudio = document.getElementById("emptyInputAudio");
 var letterValidAudio = document.getElementById("letterValidAudio");
+var table = document.getElementById("quiztable");
+var isFirstQuestion = false;
+var stFirstName, stLastName;
 
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
@@ -127,19 +134,150 @@ startButton.addEventListener("click", startTest);
 nextButton.addEventListener("click", () => {
   //Validate user input
   if (answerBox.value == "") {
+    emptyInputAudio.pause();
+    emptyInputAudio.currentTime = 0;
     emptyInputAudio.play();
   } else if (
     answerBox.value.length != 1 ||
     !isCharacterALetter(answerBox.value)
   ) {
+    letterValidAudio.pause();
+    letterValidAudio.currentTime = 0;
     letterValidAudio.play();
   } else {
+    emptyInputAudio.pause();
+    emptyInputAudio.currentTime = 0;
+    letterValidAudio.pause();
+    letterValidAudio.currentTime = 0;
     checkAnswer(shuffledQuestions[currentQuestionIndex]);
     currentQuestionIndex++;
     clearLastImage();
     setNextQuestion();
   }
 });
+
+loginButton.addEventListener("click",() => {
+  loginButton.classList.add("hide");
+  teacherLoginConElement.classList.remove("hide");
+  startButton.classList.add("hide");
+});
+
+teacherSubmitBtn.addEventListener("click",() => {
+ 
+  //TODO: Authentication
+
+  loginButton.classList.add("hide");
+  startButton.classList.add("hide");
+  teacherLoginConElement.classList.add("hide");
+  resDashboardConElement.classList.remove("hide");
+  
+});
+
+// Get saved quiz from database
+function searchByName() {
+  var firstname = document.getElementById("firstnameSearchinput").value;
+  var lastname = document.getElementById("lastnameSearchinput").value;
+  var queryParam = '';
+
+  console.log('firstname',firstname);
+  console.log('lastname',lastname);
+
+  if(firstname) {
+    queryParam = '?firstname='+firstname ;
+  } 
+  if(lastname) {
+    if(!firstname) {
+      window.alert('Please enter first name');
+    } else {
+      queryParam = '?firstname='+firstname+'&lastname='+lastname;
+    }   
+  } 
+
+  if(!firstname && !lastname) {
+    queryParam = '' ;
+  }
+  console.log('queryParam',queryParam);
+
+  fetch(`/api/users${queryParam}`,{
+    method: "GET"
+  }) 
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    alert("Error: " + response.statusText);
+  })
+  .then(data => {
+    console.log('data',data);
+    for(i=0;i<data.length;i++) {
+      console.log('data',data.id);
+      var rowCount = table.rows.length;
+      var row = table.insertRow(rowCount);
+
+     // Cell 1
+      var cell1 = row.insertCell(0);
+      cell1.innerHTML = data[i].id;
+
+      // Cell 2
+      var cell2 = row.insertCell(0);
+      cell2.innerHTML = data[i].firstname;
+
+      // Cell 3
+      var cell3 = row.insertCell(0);
+      cell3.innerHTML = data[i].lastname;
+
+      // Cell 4
+      var cell4 = row.insertCell(0);
+      cell4.innerHTML = data[i].created_at;
+    }
+  });
+ /* .then(data => {
+    console.log('datafromuser',data);
+    if(data != null && data.length > 0) {
+      stFirstName = data[0].firstname;
+      stLastName = data[0].lastname;
+      fetch(`/api/quiz/${data[0].id}`,{
+        method: "GET"
+      })  
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        alert("Error: " + response.statusText);
+      })
+      .then(data => {
+        console.log('data',data);
+        for(i=0;i<data.length;i++) {
+          var rowCount = table.rows.length;
+          var row = table.insertRow(rowCount);
+    
+         // Cell 1
+          var cell1 = row.insertCell(0);
+          cell1.innerHTML = data[i].id;
+    
+          // Cell 2
+          var cell2 = row.insertCell(0);
+          cell2.innerHTML = stFirstName;
+    
+          // Cell 3
+          var cell3 = row.insertCell(0);
+          cell3.innerHTML = stLastName;
+    
+          // Cell 4
+          var cell4 = row.insertCell(0);
+          cell4.innerHTML = data[i].created_at;
+        }
+      });
+    } else{
+      console.log('No matching user records found');
+    }
+   
+  }) */
+ 
+}
+
+// Saved quiz search
+nameSearchBtn.addEventListener("click",searchByName); 
 
 // Check if the input entered is a letter
 function isCharacterALetter(char) {
@@ -151,6 +289,7 @@ function startTest() {
   console.log("started");
   //using class hide to make start button disappear after test begins
   startButton.classList.add("hide");
+  teacherLoginElement.classList.add("hide");
   shuffledQuestions = questions.sort(() => Math.random() - 0.5);
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove("hide");
@@ -194,9 +333,13 @@ function clearLastImage() {
 
 //Displays question using question array
 function showQuestion(question) {
-  quesAudio.pause();
-  quesAudio.currentTime = 0;
-  quesAudio.play();
+
+  if(!isFirstQuestion) {
+    quesAudio.pause();
+    quesAudio.currentTime = 0;
+    quesAudio.play();
+    isFirstQuestion = true;
+  }
   console.log(currentQuestionIndex);
   emoji = document.createElement("img");
   emoji.src = question.emojiImage;
