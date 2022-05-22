@@ -103,7 +103,14 @@ async function signupFormHandler(event) {
   
     const firstname = document.querySelector('#firstname-signup').value.trim();
     const lastname = document.querySelector('#lastname-signup').value.trim();
-    const role = document.querySelector('#role-signup').value.trim();
+    const role = document.querySelectorAll('input[name="radio"]');
+    let selectedRole;
+    Array.prototype.forEach.call(roleButtons, function(btn) {
+        btn.addEventListener('change', function(){
+            selectedRole = this.value;
+            console.log(role);
+  });
+});
     const password = document.querySelector('#password-signup').value.trim();
   
     if (username && email && password) {
