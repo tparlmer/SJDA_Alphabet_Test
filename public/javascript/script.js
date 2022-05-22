@@ -209,26 +209,46 @@ function searchByName() {
   })
   .then(data => {
     console.log('data',data);
+    var rowCount = table.rows.length;
+
+    // Delete already filled rows
+    for (var i = rowCount - 1; i > 0; i--) {
+      table.deleteRow(i);
+    }
+
     for(i=0;i<data.length;i++) {
-      console.log('data',data.id);
-      var rowCount = table.rows.length;
-      var row = table.insertRow(rowCount);
 
-     // Cell 1
-      var cell1 = row.insertCell(0);
-      cell1.innerHTML = data[i].id;
+      console.log('data[i]',data[i].firstname);
 
-      // Cell 2
-      var cell2 = row.insertCell(0);
-      cell2.innerHTML = data[i].firstname;
+      for(x=0;x<data[i].quizzes.length;x++) {
+        var createdDate = new Date(data[i].quizzes[x].createdAt).toLocaleDateString();
+        var row = table.insertRow(table.rows.length);
+        
+        // Cell 4
+        var cell4 = row.insertCell(0);
+        var rsltLink = document.createElement("button");
+        rsltLink.name = "rslBtn";
+        rsltLink.type="button";
+        rsltLink.class="btn btn-primary";
+        rsltLink.innerHTML = "View Results";
+        rsltLink.id = "rsltBtn";
+        cell4.appendChild(rsltLink);
+        rsltLink.addEventListener("click",{
 
-      // Cell 3
-      var cell3 = row.insertCell(0);
-      cell3.innerHTML = data[i].lastname;
+        })
 
-      // Cell 4
-      var cell4 = row.insertCell(0);
-      cell4.innerHTML = data[i].created_at;
+        // Cell 3
+        var cell3 = row.insertCell(0);
+        cell3.innerHTML = createdDate;
+
+        // Cell 2
+        var cell2 = row.insertCell(0);
+        cell2.innerHTML = data[i].lastname;
+
+        // Cell 1
+        var cell1 = row.insertCell(0);
+        cell1.innerHTML = data[i].firstname;
+      }
     }
   });
  /* .then(data => {
