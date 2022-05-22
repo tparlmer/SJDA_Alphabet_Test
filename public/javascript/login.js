@@ -3,6 +3,8 @@ const teacherLoginButton = document.getElementById("teacher-login-button");
 var showStudentLogin = document.getElementById("show-student-login");
 var showTeacherLogin = document.getElementById("show-teacher-login");
 
+
+
 showTeacherLogin.style.display = "none";
 showStudentLogin.style.display = "none";
 
@@ -30,6 +32,8 @@ function teacherLoginClick() {
 //     showTeacherLogin.style.display = "none";
 //   }
 }
+
+//Student Login Start
 async function loginStudentHandler(event) {
     event.preventDefault();
   
@@ -59,7 +63,9 @@ async function loginStudentHandler(event) {
     }
   }
   document.querySelector('.student-form').addEventListener('submit', loginStudentHandler);
+//Student Login End
 
+  //Teacher Login Start
   async function loginTeacherHandler(event) {
     event.preventDefault();
   
@@ -89,6 +95,39 @@ async function loginStudentHandler(event) {
     }
   }
   document.querySelector('.teacher-form').addEventListener('submit', loginTeacherHandler);
+//Teacher Login end
+
+//Signup Start
+async function signupFormHandler(event) {
+    event.preventDefault();
+  
+    const firstname = document.querySelector('#firstname-signup').value.trim();
+    const lastname = document.querySelector('#lastname-signup').value.trim();
+    const role = document.querySelector('#role-signup').value.trim();
+    const password = document.querySelector('#password-signup').value.trim();
+  
+    if (username && email && password) {
+      const response = await fetch('/api/users', {
+        method: 'post',
+        body: JSON.stringify({
+          firstname,
+          lastname,
+          role, //this needs to be controlled by radio buttons unless a form is easier.
+          password
+        }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+  
+      if (response.ok) {
+        document.location.replace('/dashboard/');
+      } else {
+        alert(response.statusText);
+      }
+    }
+  }
+//Signup End
+
+
 
 function setFormMessage(formElement, type, message) {
   const messageElement = formElement.querySelector(".form-message");
