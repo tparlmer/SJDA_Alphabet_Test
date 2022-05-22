@@ -209,10 +209,15 @@ function searchByName() {
   })
   .then(data => {
     console.log('data',data);
+    var rowCount = table.rows.length;
+
+    // Delete already filled rows
+    for (var i = rowCount - 1; i > 0; i--) {
+      table.deleteRow(i);
+    }
+
     for(i=0;i<data.length;i++) {
-      console.log('data',data.id);
-      var rowCount = table.rows.length;
-      var row = table.insertRow(rowCount);
+      var row = table.insertRow(table.rows.length);
 
      // Cell 1
       var cell1 = row.insertCell(0);
