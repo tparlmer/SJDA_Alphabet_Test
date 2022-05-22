@@ -1,5 +1,6 @@
 const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
+const logoutButton = document.getElementById("logout-btn");
 const loginButton = document.getElementById("login-btn");
 const questionContainerElement = document.getElementById("question-container");
 /* const teacherLoginElement = document.getElementById("teacherlogin");
@@ -12,6 +13,7 @@ const resDashboardConElement = document.getElementById(
 const headerElement = document.getElementById("card-header");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const submitButton = document.getElementById("submit-btn");
+
 const answerBox = document.getElementById("answer-box");
 var quesAudio = document.getElementById("quesAudio");
 var emptyInputAudio = document.getElementById("emptyInputAudio");
@@ -296,4 +298,5 @@ const endTest = () => {
   scoreBox.textContent = numberCorrect + " Out of 26 Correct";
   headerElement.appendChild(scoreBox);
   sendScore();
+  logoutButton.classList.remove("hide");
 };
