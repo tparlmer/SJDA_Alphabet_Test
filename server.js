@@ -52,6 +52,9 @@ app.get('/', function(req, res) {
 app.get('/startquiz/', function(req, res) {
   res.render('pages/startquiz');
 });
+app.get('/dashboard/', function(req, res) {
+  res.render('pages/dashboard');
+});
 
 
 // node reference to controllers folder

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Alphabet Quiz</title>
+  </head>
+  <!--Login link for teachers on the start page-->
+  <div id="teacherlogin">
+    <div id="teacherlogin">
+      <button type="button" id="login-btn" class="btn btn-link">
+        Login as Instructor
+      </button>
+    </div>
+  </div>
+
+  <!--Login form for teachers-->
+  <div id="teacherlogin-container" class="hide">
+    <div id="teacherlogincontainer">
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+          />
+        </div>
+        <button type="button" id="teacherSubmitBtn" class="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!--Quiz Results Dashboard-->
+  <div id="resDashboard-container" class="hide">
+    <div id="resDashboardcontainer">
+      <!--Name Search-->
+      <div class="nameSearchDiv" style="margin-bottom: 15px">
+        <div>
+          <div class="nameSerchInputDiv">
+            <input
+              type="search"
+              id="firstnameSearchinput"
+              class="form-control"
+              placeholder="Enter First Name"
+              style="margin: 2px; width: 50%"
+            />
+            <input
+              type="search"
+              id="lastnameSearchinput"
+              class="form-control"
+              placeholder="Enter Last Name"
+              style="margin: 2px; width: 50%"
+            />
+          </div>
+          <div>
+            <button
+              type="button"
+              id="nameSearchBtn"
+              class="btn btn-outline-primary"
+              style="margin: 2px"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!--Table to display search results-->
+      <table class="table" id="quiztable">
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Created Date</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="resultsModal"
+    tabindex="-1"
+    aria-labelledby="resultsModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="resultsModalLabel">Modal title</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">...</div>
+      </div>
+    </div>
+  </div>
+</html>
