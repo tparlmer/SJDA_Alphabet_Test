@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/login.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" id="student-login-button">
+        <button type="button" class="btn btn-info">
+            student login
+        </button>
+    </div>
+    <div class="container" id="teacher-login-button">
+        <button type="button" class="btn btn-info">
+            teacher login
+        </button>
+    </div>
+    
+    <!--STUDENT LOGIN-->
+    <div id="show-student-login">
+        <div class="container">
+            <form class="student-form" id="login">
+                <h1 class="form-title">Student Login</h1>
+                <div class="form-message form-message-error"></div>
+                <div class="form-input-group">
+                    <input type="text" class="form-input" id="firstname-login" autofocus placeholder="First Name">
+                    <div class="form-input-error-message"></div>
+                </div>
+                <div class="form-input-group">
+                    <input type="text" class="form-input" id="lastname-login" autofocus placeholder="Last Name">
+                    <div class="form-input-error-message"></div>
+                </div>
+                <div class="form-input-group">
+                    <input type="password" class="form-input" id="password-login" autofocus placeholder="5 letter password">
+                    <div class="form-input-error-message"></div>
+                </div>
+                <button class="form-button" type="submit">Continue</button>
+                <p class="form-text">
+                    <a id="link-create-account" href ="./" class="form-link">Don't have an account? Create account</a>
+                </p>
+            </form>
+            <form class="form form-hidden" id="create-account">
+                <h1 class="form-title">Create Account</h1>
+                <div class="form-message form-message-error"></div>
+                <div class="form-input-group">
+                    <input type="text" class="form-input" id="signup-username" autofocus placeholder="firstname">
+                    <div class="form-input-error-message"></div>
+                </div>
+                <div class="form-input-group">
+                    <input type="password" class="form-input" autofocus placeholder="lastname">
+                    <div class="form-input-error-message"></div>
+                </div>
+                <div class="form-input-group">
+                    <input type="password" class="form-input" autofocus placeholder="Confirm Last Name">
+                    <div class="form-input-error-message"></div>
+                </div>
+                <button class="form-button" type="submit">Continue</button>
+                <p class="form-text">
+                    <a id="link-login" href ="./" class="form-link">Already have an account? Sign in</a>
+                </p>
+            </form>
+        </div>
+
+    </div>
+
+    <!--TEACHER LOGIN-->
+    <div id="show-teacher-login">
+        <div class="container">
+            <form class="teacher-form" id="login">
+                <h1 class="form-title">Teacher Login</h1>
+                <div class="form-message form-message-error"></div>
+                <div class="form-input-group">
+                    <input type="text" class="form-input" id="firstname-login-teacher" autofocus placeholder="First Name">
+                    <div class="form-input-error-message"></div>
+                </div>
+                <div class="form-input-group">
+                    <input type="text" class="form-input" id="lastname-login-teacher" autofocus placeholder="Last Name">
+                    <div class="form-input-error-message"></div>
+                </div>
+                <div class="form-input-group">
+                    <input type="password" class="form-input" id="password-login-teacher" autofocus placeholder="5 letter password">
+                    <div class="form-input-error-message"></div>
+                </div>
+                <button class="form-button" type="submit">Submit</button>
+                <p class="form-text">
+                    <a id="link-create-account" href ="./" class="form-link">Don't have an account? Create account</a>
+                </p>
+            </form>
+            <form class="form form-hidden" id="create-account">
+                <h1 class="form-title">Create Account</h1>
+                <div class="form-message form-message-error"></div>
+                <div class="form-input-group">
+                    <input type="text" class="form-input" id="signup-username" autofocus placeholder="firstname">
+                    <div class="form-input-error-message"></div>
+                </div>
+                <div class="form-input-group">
+                    <input type="password" class="form-input" autofocus placeholder="lastname">
+                    <div class="form-input-error-message"></div>
+                </div>
+                <div class="form-input-group">
+                    <input type="password" class="form-input" autofocus placeholder="Confirm lastname">
+                    <div class="form-input-error-message"></div>
+                </div>
+                <button class="form-button" type="submit">Continue</button>
+                <p class="form-text">
+                    <a id="link-login" href ="./" class="form-link">Already have an account? Sign in</a>
+                </p>
+            </form>
+        </div>
+    </div>
+    <script src="./javascript/login.js"></script>
+</body>
+</html>

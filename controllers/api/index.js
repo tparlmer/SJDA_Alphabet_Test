@@ -7,3 +7,4 @@ router.use('/quiz', quizRoutes)
 router.use('/users', userRoutes)
 
 module.exports = router;
+

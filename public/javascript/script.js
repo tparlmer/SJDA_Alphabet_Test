@@ -1,6 +1,10 @@
 const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
+const loginButton = document.getElementById("login-btn");
 const questionContainerElement = document.getElementById("question-container");
+const teacherLoginElement = document.getElementById("teacherlogin");
+const teacherLoginConElement = document.getElementById("teacherlogin-container");
+const resDashboardConElement = document.getElementById("resDashboard-container");
 const headerElement = document.getElementById("card-header");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const submitButton = document.getElementById("submit-btn");
@@ -8,6 +12,9 @@ const answerBox = document.getElementById("answer-box");
 var quesAudio = document.getElementById("quesAudio");
 var emptyInputAudio = document.getElementById("emptyInputAudio");
 var letterValidAudio = document.getElementById("letterValidAudio");
+var table = document.getElementById("quiztable");
+var isFirstQuestion = false;
+var stFirstName, stLastName;
 
 let shuffledQuestions, currentQuestionIndex;
 let studentScore = [];
@@ -17,107 +24,107 @@ let emoji;
 //Array of questions with relative file path
 const questions = [
   {
-    emojiImage: "./images/apple.svg",
+    emojiImage: "/images/apple.svg",
     correct_answer: "a",
   },
   {
-    emojiImage: "./images/bike.svg",
+    emojiImage: "/images/bike.svg",
     correct_answer: "b",
   },
   {
-    emojiImage: "./images/cat.svg",
+    emojiImage: "/images/cat.svg",
     correct_answer: "c",
   },
   {
-    emojiImage: "./images/duck.svg",
+    emojiImage: "/images/duck.svg",
     correct_answer: "d",
   },
   {
-    emojiImage: "./images/egg.svg",
+    emojiImage: "/images/egg.svg",
     correct_answer: "e",
   },
   {
-    emojiImage: "./images/fish.svg",
+    emojiImage: "/images/fish.svg",
     correct_answer: "f",
   },
   {
-    emojiImage: "./images/goat.svg",
+    emojiImage: "/images/goat.svg",
     correct_answer: "g",
   },
   {
-    emojiImage: "./images/house.svg",
+    emojiImage: "/images/house.svg",
     correct_answer: "h",
   },
   {
-    emojiImage: "./images/ice.svg",
+    emojiImage: "/images/ice.svg",
     correct_answer: "i",
   },
   {
-    emojiImage: "./images/juice.svg",
+    emojiImage: "/images/juice.svg",
     correct_answer: "j",
   },
   {
-    emojiImage: "./images/kite.svg",
+    emojiImage: "/images/kite.svg",
     correct_answer: "k",
   },
   {
-    emojiImage: "./images/lion.svg",
+    emojiImage: "/images/lion.svg",
     correct_answer: "l",
   },
   {
-    emojiImage: "./images/mouse.svg",
+    emojiImage: "/images/mouse.svg",
     correct_answer: "m",
   },
   {
-    emojiImage: "./images/nose.svg",
+    emojiImage: "/images/nose.svg",
     correct_answer: "n",
   },
   {
-    emojiImage: "./images/octopus.svg",
+    emojiImage: "/images/octopus.svg",
     correct_answer: "o",
   },
   {
-    emojiImage: "./images/panda.svg",
+    emojiImage: "/images/panda.svg",
     correct_answer: "p",
   },
   {
-    emojiImage: "./images/question.svg",
+    emojiImage: "/images/question.svg",
     correct_answer: "q",
   },
   {
-    emojiImage: "./images/rainbow.svg",
+    emojiImage: "/images/rainbow.svg",
     correct_answer: "r",
   },
   {
-    emojiImage: "./images/star.svg",
+    emojiImage: "/images/star.svg",
     correct_answer: "s",
   },
   {
-    emojiImage: "./images/television.svg",
-    correct_answer: "t",
+    emojiImage: "/images/television.svg",
+    correct_answer: "t"
   },
   {
-    emojiImage: "./images/umbrella.svg",
+    emojiImage: "/images/umbrella.svg",
     correct_answer: "u",
   },
   {
-    emojiImage: "./images/volcano.svg",
+    emojiImage: "/images/volcano.svg",
     correct_answer: "v",
   },
   {
-    emojiImage: "./images/watch.svg",
+    emojiImage: "/images/watch.svg",
     correct_answer: "w",
   },
   {
-    emojiImage: "./images/x-ray.svg",
+    emojiImage: "/images/x-ray.svg",
     correct_answer: "x",
   },
   {
-    emojiImage: "./images/yo-yo.svg",
+    emojiImage: "/images/yo-yo.svg",
     correct_answer: "y",
   },
   {
-    emojiImage: "./images/zebra.svg",
+    emojiImage: "/images/zebra.svg",
     correct_answer: "z",
   },
 ];
@@ -127,19 +134,170 @@ startButton.addEventListener("click", startTest);
 nextButton.addEventListener("click", () => {
   //Validate user input
   if (answerBox.value == "") {
+    emptyInputAudio.pause();
+    emptyInputAudio.currentTime = 0;
     emptyInputAudio.play();
   } else if (
     answerBox.value.length != 1 ||
     !isCharacterALetter(answerBox.value)
   ) {
+    letterValidAudio.pause();
+    letterValidAudio.currentTime = 0;
     letterValidAudio.play();
   } else {
+    emptyInputAudio.pause();
+    emptyInputAudio.currentTime = 0;
+    letterValidAudio.pause();
+    letterValidAudio.currentTime = 0;
     checkAnswer(shuffledQuestions[currentQuestionIndex]);
     currentQuestionIndex++;
     clearLastImage();
     setNextQuestion();
   }
 });
+
+loginButton.addEventListener("click",() => {
+  loginButton.classList.add("hide");
+  teacherLoginConElement.classList.remove("hide");
+  startButton.classList.add("hide");
+});
+
+teacherSubmitBtn.addEventListener("click",() => {
+ 
+  //TODO: Authentication
+
+  loginButton.classList.add("hide");
+  startButton.classList.add("hide");
+  teacherLoginConElement.classList.add("hide");
+  resDashboardConElement.classList.remove("hide");
+  
+});
+
+// Get saved quiz from database
+function searchByName() {
+  var firstname = document.getElementById("firstnameSearchinput").value;
+  var lastname = document.getElementById("lastnameSearchinput").value;
+  var queryParam = '';
+
+  console.log('firstname',firstname);
+  console.log('lastname',lastname);
+
+  if(firstname) {
+    queryParam = '?firstname='+firstname ;
+  } 
+  if(lastname) {
+    if(!firstname) {
+      window.alert('Please enter first name');
+    } else {
+      queryParam = '?firstname='+firstname+'&lastname='+lastname;
+    }   
+  } 
+
+  if(!firstname && !lastname) {
+    queryParam = '' ;
+  }
+  console.log('queryParam',queryParam);
+
+  fetch(`/api/users${queryParam}`,{
+    method: "GET"
+  }) 
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    alert("Error: " + response.statusText);
+  })
+  .then(data => {
+    console.log('data',data);
+    var rowCount = table.rows.length;
+
+    // Delete already filled rows
+    for (var i = rowCount - 1; i > 0; i--) {
+      table.deleteRow(i);
+    }
+
+    for(i=0;i<data.length;i++) {
+
+      console.log('data[i]',data[i].firstname);
+
+      for(x=0;x<data[i].quizzes.length;x++) {
+        var createdDate = new Date(data[i].quizzes[x].createdAt).toLocaleDateString();
+        var row = table.insertRow(table.rows.length);
+        
+        // Cell 4
+        var cell4 = row.insertCell(0);
+        var rsltLink = document.createElement("button");
+        rsltLink.name = "rslBtn";
+        rsltLink.type="button";
+        rsltLink.class="btn btn-primary";
+        rsltLink.innerHTML = "View Results";
+        rsltLink.id = "rsltBtn";
+        cell4.appendChild(rsltLink);
+        rsltLink.addEventListener("click",{
+
+        })
+
+        // Cell 3
+        var cell3 = row.insertCell(0);
+        cell3.innerHTML = createdDate;
+
+        // Cell 2
+        var cell2 = row.insertCell(0);
+        cell2.innerHTML = data[i].lastname;
+
+        // Cell 1
+        var cell1 = row.insertCell(0);
+        cell1.innerHTML = data[i].firstname;
+      }
+    }
+  });
+ /* .then(data => {
+    console.log('datafromuser',data);
+    if(data != null && data.length > 0) {
+      stFirstName = data[0].firstname;
+      stLastName = data[0].lastname;
+      fetch(`/api/quiz/${data[0].id}`,{
+        method: "GET"
+      })  
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        alert("Error: " + response.statusText);
+      })
+      .then(data => {
+        console.log('data',data);
+        for(i=0;i<data.length;i++) {
+          var rowCount = table.rows.length;
+          var row = table.insertRow(rowCount);
+    
+         // Cell 1
+          var cell1 = row.insertCell(0);
+          cell1.innerHTML = data[i].id;
+    
+          // Cell 2
+          var cell2 = row.insertCell(0);
+          cell2.innerHTML = stFirstName;
+    
+          // Cell 3
+          var cell3 = row.insertCell(0);
+          cell3.innerHTML = stLastName;
+    
+          // Cell 4
+          var cell4 = row.insertCell(0);
+          cell4.innerHTML = data[i].created_at;
+        }
+      });
+    } else{
+      console.log('No matching user records found');
+    }
+   
+  }) */
+ 
+}
+
+// Saved quiz search
+nameSearchBtn.addEventListener("click",searchByName); 
 
 // Check if the input entered is a letter
 function isCharacterALetter(char) {
@@ -151,6 +309,7 @@ function startTest() {
   console.log("started");
   //using class hide to make start button disappear after test begins
   startButton.classList.add("hide");
+  teacherLoginElement.classList.add("hide");
   shuffledQuestions = questions.sort(() => Math.random() - 0.5);
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove("hide");
@@ -194,9 +353,13 @@ function clearLastImage() {
 
 //Displays question using question array
 function showQuestion(question) {
-  quesAudio.pause();
-  quesAudio.currentTime = 0;
-  quesAudio.play();
+
+  if(!isFirstQuestion) {
+    quesAudio.pause();
+    quesAudio.currentTime = 0;
+    quesAudio.play();
+    isFirstQuestion = true;
+  }
   console.log(currentQuestionIndex);
   emoji = document.createElement("img");
   emoji.src = question.emojiImage;
@@ -233,7 +396,7 @@ const sendScore = () => {
     },
     body: JSON.stringify({
       user_id: 1, //change this later (dummy data for testing)
-      quizData: studentScore,
+      quizData: studentScore
     }),
   })
     .then((response) => {
