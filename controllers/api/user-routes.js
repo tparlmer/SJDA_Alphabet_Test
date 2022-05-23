@@ -9,7 +9,7 @@ const { User, Quiz } = require("../../models");
 // GET /api/users
 router.get("/", (req, res) => {
   // This route is for grabbing all the users from the user table
-  // filter out passwords
+  // filter out passwordsc
    console.log('req.path',req.query);
   var whereQuery = {};
 
@@ -120,12 +120,22 @@ router.post("/login", (req, res) => {
       req.session.lastname = dbUserData.lastname;
       req.session.role = dbUserData.role;
       req.session.loggedIn = true;
-
       res.json({ user: dbUserData, message: "You are now logged in!" });
     });
   });
 });
 
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+      console.log('You are now logged out')
+    });
+  }
+  else {
+    res.status(404).end();
+  }
+});
 //Saving PUT and Delete Routes for a later date
 // PUT /api/users/1
 // router.put("/:id", (req, res) => {
