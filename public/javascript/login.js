@@ -103,17 +103,10 @@ async function signupFormHandler(event) {
   
     const firstname = document.querySelector('#firstname-signup').value.trim();
     const lastname = document.querySelector('#lastname-signup').value.trim();
-    const role = document.querySelectorAll('input[name="radio"]');
-    let selectedRole;
-    Array.prototype.forEach.call(roleButtons, function(btn) {
-        btn.addEventListener('change', function(){
-            selectedRole = this.value;
-            console.log(role);
-  });
-});
     const password = document.querySelector('#password-signup').value.trim();
-  
-    if (username && email && password) {
+    const role = document.querySelector('input[name="role"]:checked').value;
+
+    if (firstname && lastname && password) {
       const response = await fetch('/api/users', {
         method: 'post',
         body: JSON.stringify({
@@ -126,12 +119,19 @@ async function signupFormHandler(event) {
       });
   
       if (response.ok) {
-        document.location.replace('/dashboard/');
+        console.log(role)
+        if(role==="student"){
+          document.location.replace('/startquiz/');
+        }
+         else if(role==="teacher"){
+          document.location.replace('/dashboard/');
+        }
       } else {
         alert(response.statusText);
       }
     }
   }
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
 //Signup End
 
 
@@ -152,24 +152,52 @@ function setInputError(inputElement, message) {
 setFormMessage(loginForm, 'success', 'You are logged in:)');
 */
 document.addEventListener("DOMContentLoaded", () => {
-  const loginForm = document.querySelector("#login");
+  // const loginForm = document.querySelector("#login");
   const createAccountForm = document.querySelector("#create-account");
+  const studentLogin = document.querySelector("#student-login")
+  const teacherLogin = document.querySelector("#teacher-login")
 
   document
-    .querySelector("#link-create-account")
+    .querySelector("#link-create-account-student")
     .addEventListener("click", (e) => {
       e.preventDefault();
-      loginForm.classList.add("form-hidden");
+      // loginForm.classList.add("form-hidden");
+      showStudentLogin.style.display = "none";
+      showTeacherLogin.style.display = "none";
+      studentLogin.classList.add("form-hidden");
+      teacherLogin.classList.add("form-hidden");
+      createAccountForm.classList.remove("form-hidden");
+    });
+
+  document
+    .querySelector("#link-create-account-teacher")
+    .addEventListener("click", (e) => {
+      e.preventDefault();
+      // loginForm.classList.add("form-hidden");
+      showTeacherLogin.style.display = "none";
+      showStudentLogin.style.display = "none";
+      studentLogin.classList.add("form-hidden");
+      teacherLogin.classList.add("form-hidden");
       createAccountForm.classList.remove("form-hidden");
     });
 
   document.querySelector("#link-login").addEventListener("click", (e) => {
     e.preventDefault();
-    loginForm.classList.remove("form-hidden");
+    showStudentLogin.style.display = "block";
+    showTeacherLogin.style.display = "block";
+    studentLogin.classList.remove("form-hidden");
+    teacherLogin.classList.remove("form-hidden");
     createAccountForm.classList.add("form-hidden");
   });
 
-  /* loginForm.addEventListener('submit', e => {
+  /* 
+  showStudentLogin.style.display = "none";
+  showTeacherLogin.style.display = "none";
+  
+  studentLoginButton.style.display = "none";
+  teacherLoginButton.style.display = "none";
+  
+  loginForm.addEventListener('submit', e => {
         e.preventDefault();
 
         //perform your login

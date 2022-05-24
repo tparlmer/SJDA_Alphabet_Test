@@ -9,7 +9,7 @@ const { User, Quiz } = require("../../models");
 // GET /api/users
 router.get("/", (req, res) => {
   // This route is for grabbing all the users from the user table
-  // filter out passwords
+  // filter out passwordsc
    console.log('req.path',req.query);
   var whereQuery = {};
 
