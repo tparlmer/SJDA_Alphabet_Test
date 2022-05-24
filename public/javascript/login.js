@@ -3,8 +3,6 @@ const teacherLoginButton = document.getElementById("teacher-login-button");
 var showStudentLogin = document.getElementById("show-student-login");
 var showTeacherLogin = document.getElementById("show-teacher-login");
 
-
-
 showTeacherLogin.style.display = "none";
 showStudentLogin.style.display = "none";
 
@@ -14,11 +12,6 @@ function studentLoginClick() {
   showStudentLogin.style.display = "block";
   studentLoginButton.style.display = "none";
   teacherLoginButton.style.display = "none";
-  //   if (showStudentLogin.style.display === "none") {
-  //     showStudentLogin.style.display = "block";
-  //   } else {
-  //     showStudentLogin.style.display = "none";
-  //   }
 }
 teacherLoginButton.addEventListener("click", teacherLoginClick);
 function teacherLoginClick() {
@@ -32,11 +25,17 @@ function teacherLoginClick() {
   //     showTeacherLogin.style.display = "none";
   //   }
 }
+document
+  .getElementById("stlogin")
+  .addEventListener("submit", loginStudentHandler);
+document
+  .querySelector(".teacher-form")
+  .addEventListener("submit", loginTeacherHandler);
 
 //Student Login Start
 async function loginStudentHandler(event) {
   event.preventDefault();
-
+  console.log("inside loginStudentHandler");
   const firstname = document.querySelector("#firstname-login").value.trim();
   const lastname = document.querySelector("#lastname-login").value.trim();
   const password = document.querySelector("#password-login").value.trim();
@@ -61,80 +60,86 @@ async function loginStudentHandler(event) {
       alert(response.statusText);
     }
   }
+}
 
-  document.querySelector('.student-form').addEventListener('submit', loginStudentHandler);
 //Student Login End
 
-  //Teacher Login Start
-  async function loginTeacherHandler(event) {
-    event.preventDefault();
-  
-    const firstname = document.querySelector('#firstname-login-teacher').value.trim();
-    const lastname = document.querySelector('#lastname-login-teacher').value.trim();
-    const password = document.querySelector('#password-login-teacher').value.trim();
-  
-    if (firstname && lastname && password) {
-      const response = await fetch('/api/users/login', {
-        method: 'post',
-        body: JSON.stringify({
-          firstname,
-          lastname,
-          role:"teacher",
-          password
-        }),
-        headers: { 'Content-Type': 'application/json' }
-      });
-  
-      if (response.ok) {
-        console.log("you are now logged in");
-       document.location.replace("/dashboard/");
-        //render teacher dashboard html
-      } else {
-        alert(response.statusText);
-      }
+//Teacher Login Start
+async function loginTeacherHandler(event) {
+  alert("you are now logged in");
+  event.preventDefault();
+
+  const firstname = document
+    .querySelector("#firstname-login-teacher")
+    .value.trim();
+  const lastname = document
+    .querySelector("#lastname-login-teacher")
+    .value.trim();
+  const password = document
+    .querySelector("#password-login-teacher")
+    .value.trim();
+
+  if (firstname && lastname && password) {
+    const response = await fetch("/api/users/login", {
+      method: "post",
+      body: JSON.stringify({
+        firstname,
+        lastname,
+        role: "teacher",
+        password,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (response.ok) {
+      console.log("you are now logged in");
+      document.location.replace("/dashboard/");
+      //render teacher dashboard html
+    } else {
+      alert(response.statusText);
     }
   }
-  document.querySelector('.teacher-form').addEventListener('submit', loginTeacherHandler);
+}
+
 //Teacher Login end
 
 //Signup Start
 async function signupFormHandler(event) {
-    event.preventDefault();
-  
-    const firstname = document.querySelector('#firstname-signup').value.trim();
-    const lastname = document.querySelector('#lastname-signup').value.trim();
-    const role = document.querySelectorAll('input[name="radio"]');
-    let selectedRole;
-    Array.prototype.forEach.call(roleButtons, function(btn) {
-        btn.addEventListener('change', function(){
-            selectedRole = this.value;
-            console.log(role);
+  event.preventDefault();
+
+  const firstname = document.querySelector("#firstname-signup").value.trim();
+  const lastname = document.querySelector("#lastname-signup").value.trim();
+  const role = document.querySelectorAll('input[name="radio"]');
+  let selectedRole;
+  Array.prototype.forEach.call(roleButtons, function (btn) {
+    btn.addEventListener("change", function () {
+      selectedRole = this.value;
+      console.log(role);
+    });
   });
-});
-    const password = document.querySelector('#password-signup').value.trim();
-  
-    if (username && email && password) {
-      const response = await fetch('/api/users', {
-        method: 'post',
-        body: JSON.stringify({
-          firstname,
-          lastname,
-          role, //this needs to be controlled by radio buttons unless a form is easier.
-          password
-        }),
-        headers: { 'Content-Type': 'application/json' }
-      });
-  
-      if (response.ok) {
-        document.location.replace('/dashboard/');
-      } else {
-        alert(response.statusText);
-      }
+  const password = document.querySelector("#password-signup").value.trim();
+
+  if (username && email && password) {
+    const response = await fetch("/api/users", {
+      method: "post",
+      body: JSON.stringify({
+        firstname,
+        lastname,
+        role, //this needs to be controlled by radio buttons unless a form is easier.
+        password,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (response.ok) {
+      document.location.replace("/dashboard/");
+    } else {
+      alert(response.statusText);
     }
   }
 }
-//Signup End
 
+//Signup End
 
 function setFormMessage(formElement, type, message) {
   const messageElement = formElement.querySelector(".form-message");
@@ -152,7 +157,7 @@ function setInputError(inputElement, message) {
 setFormMessage(loginForm, 'success', 'You are logged in:)');
 */
 document.addEventListener("DOMContentLoaded", () => {
-  const loginForm = document.querySelector("#login");
+  const loginForm = document.querySelector("#stlogin");
   const createAccountForm = document.querySelector("#create-account");
 
   document

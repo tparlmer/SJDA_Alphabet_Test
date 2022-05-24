@@ -10,100 +10,11 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css" />
     <title>Alphabet Quiz</title>
   </head>
   <body>
-<<<<<<< HEAD
-    <!--Audio for the prompt-->
-    <audio id="quesAudio">
-      <source src="/audioFile.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
-    <audio id="emptyInputAudio">
-      <source src="/validationAudio.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
-    <audio id="letterValidAudio">
-      <source src="/validateInputLetterAudio.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
-
-    <div class="container">
-      <!--Login link for teachers on the start page-->
-      <div id="teacherlogin">
-        <div id="teacherlogin">
-          <button type="button" id="login-btn" class="btn btn-link">Login as Instructor</button>
-        </div>
-      </div>
-
-      <!--Login form for teachers-->
-      <div id="teacherlogin-container" class="hide">
-        <div id="teacherlogincontainer">
-          <form>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <button type="button" id="teacherSubmitBtn" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
-
-      <!--Quiz Results Dashboard-->
-      <div id="resDashboard-container" class="hide">
-        <div id="resDashboardcontainer">
-
-          <!--Name Search-->
-          <div class="nameSearchDiv" style="margin-bottom:15px;">
-            <div>
-              <div class="nameSerchInputDiv">
-                <input type="search" id="firstnameSearchinput" class="form-control" placeholder="Enter First Name" style="margin:2px;width:50%;"/>
-                <input type="search" id="lastnameSearchinput" class="form-control" placeholder="Enter Last Name" style="margin:2px;width:50%;"/>
-              </div>
-              <div>
-                <button type="button" id="nameSearchBtn" class="btn btn-outline-primary" style="margin:2px">Search</button>
-              </div>
-            </div>
-          </div>
-
-          <!--Table to display search results-->
-          <table class="table" id="quiztable">
-            <thead>
-              <tr>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Created Date</th>
-                <th scope="col"> </th>
-              </tr>
-            </thead>
-          </table>
-        </div>
-      </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="resultsModalLabel">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-          </div>
-        </div>
-      </div>
-
-    <script src="/javascript/script.js"></script>
-  </body>
-</html>
-=======
     <!--Login link for teachers on the start page-->
     <!--    <div id="teacherlogin">
       <div id="teacherlogin">
@@ -187,35 +98,43 @@
               <th scope="col">Created Date</th>
               <th scope="col"></th>
             </tr>
+            <tr id="noRecord" style="display:none"> 
+              <td>No Records Found</td>                              
+            </tr>
           </thead>
         </table>
       </div>
     </div>
 
     <!-- Modal -->
-    <div
-      class="modal fade"
-      id="resultsModal"
-      tabindex="-1"
-      aria-labelledby="resultsModalLabel"
-      aria-hidden="true"
-    >
+    <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-dialog">
+      
+        <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="resultsModalLabel">Modal title</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            
+            <h4 class="modal-title">Quiz Results</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-          <div class="modal-body">...</div>
+          <div class="modal-body">
+            <p>
+              <table class="table" id="dashboardtable">
+                <thead>
+                  <tr>
+                    <th scope="col">Question</th>
+                    <th scope="col">Answer</th>
+                  </tr>
+                </thead>
+              </table>
+            </p>
+          </div>
         </div>
+        
       </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="/javascript/dashboard.js"></script>
   </body>
 </html>
->>>>>>> origin/develop
