@@ -126,7 +126,7 @@ async function signupFormHandler(event) {
       });
   
       if (response.ok) {
-        document.location.replace('/dashboard/');
+        document.location.replace('/login/');
       } else {
         alert(response.statusText);
       }
@@ -163,6 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       // loginForm.classList.add("form-hidden");
       showStudentLogin.style.display = "none";
+      showTeacherLogin.style.display = "none";
       studentLogin.classList.add("form-hidden");
       teacherLogin.classList.add("form-hidden");
       createAccountForm.classList.remove("form-hidden");
@@ -174,6 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       // loginForm.classList.add("form-hidden");
       showTeacherLogin.style.display = "none";
+      showStudentLogin.style.display = "none";
       studentLogin.classList.add("form-hidden");
       teacherLogin.classList.add("form-hidden");
       createAccountForm.classList.remove("form-hidden");
