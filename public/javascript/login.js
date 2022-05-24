@@ -87,8 +87,8 @@ async function loginStudentHandler(event) {
   
       if (response.ok) {
         console.log("you are now logged in");
-        window.alert("The teacher is now logged in please route to dashboard via render on the server.js file see start quiz for example")
         //render teacher dashboard html
+        document.location.replace('/dashboard/')
       } else {
         alert(response.statusText);
       }

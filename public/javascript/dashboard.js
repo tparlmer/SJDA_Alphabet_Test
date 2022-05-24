@@ -1,6 +1,13 @@
+var table = document.getElementById("quiztable");
+var dashboardtable = document.getElementById("dashboardtable");
+
 const resDashboardConElement = document.getElementById(
-    "resDashboard-container"
-  );
+  "resDashboard-container"
+);
+
+// Saved quiz search
+nameSearchBtn.addEventListener("click", searchByName);
+
 // Get saved quiz from database
 function searchByName() {
   var firstname = document.getElementById("firstnameSearchinput").value;
@@ -14,16 +21,12 @@ function searchByName() {
     queryParam = "?firstname=" + firstname;
   }
   if (lastname) {
-    if (!firstname) {
-      window.alert("Please enter first name");
-    } else {
-      queryParam = "?firstname=" + firstname + "&lastname=" + lastname;
-    }
+      queryParam = "?lastname=" + lastname;
+  }
+  if(firstname && lastname) {
+    queryParam = "?firstname=" + firstname + "&lastname=" + lastname;
   }
 
-  if (!firstname && !lastname) {
-    queryParam = "";
-  }
   console.log("queryParam", queryParam);
 
   fetch(`/api/users${queryParam}`, {
@@ -33,7 +36,8 @@ function searchByName() {
       if (response.ok) {
         return response.json();
       }
-      alert("Error: " + response.statusText);
+      console.log("Error: ",response.statusText);
+      alert("An error occured fetching the data. Please try again later.");
     })
     .then((data) => {
       console.log("data", data);
@@ -43,26 +47,34 @@ function searchByName() {
       for (var i = rowCount - 1; i > 0; i--) {
         table.deleteRow(i);
       }
-
+      if(data) {
+        if(data.length == 0) {
+          var row = table.insertRow(table.rows.length);
+          row.innerHTML = "No records found";
+        }
+      }
       for (i = 0; i < data.length; i++) {
-        console.log("data[i]", data[i].firstname);
-
         for (x = 0; x < data[i].quizzes.length; x++) {
-          var createdDate = new Date(
-            data[i].quizzes[x].createdAt
-          ).toLocaleDateString();
+          var createdDate = new Date(data[i].quizzes[x].createdAt).toLocaleString();
+          var dateStr = new Date(data[i].quizzes[x].createdAt).toISOString();
+          var quizObj = data[i].quizzes[x];
+
           var row = table.insertRow(table.rows.length);
 
           // Cell 4
           var cell4 = row.insertCell(0);
           var rsltLink = document.createElement("button");
-          rsltLink.name = "rslBtn";
+          rsltLink.name = "rsltBtn"
           rsltLink.type = "button";
           rsltLink.class = "btn btn-primary";
           rsltLink.innerHTML = "View Results";
-          rsltLink.id = "rsltBtn";
+          rsltLink.setAttribute("data-toggle","modal");
+          rsltLink.setAttribute("data-target","myModal");
+          rsltLink.id = data[i].firstname+data[i].lastname+dateStr;
           cell4.appendChild(rsltLink);
-          rsltLink.addEventListener("click", {});
+          rsltLink.addEventListener("click",function(){
+            OpenBootstrapPopup(data,this.id);
+          }); 
 
           // Cell 3
           var cell3 = row.insertCell(0);
@@ -78,49 +90,49 @@ function searchByName() {
         }
       }
     });
-  /* .then(data => {
-      console.log('datafromuser',data);
-      if(data != null && data.length > 0) {
-        stFirstName = data[0].firstname;
-        stLastName = data[0].lastname;
-        fetch(`/api/quiz/${data[0].id}`,{
-          method: "GET"
-        })  
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          }
-          alert("Error: " + response.statusText);
-        })
-        .then(data => {
-          console.log('data',data);
-          for(i=0;i<data.length;i++) {
-            var rowCount = table.rows.length;
-            var row = table.insertRow(rowCount);
-      
-           // Cell 1
-            var cell1 = row.insertCell(0);
-            cell1.innerHTML = data[i].id;
-      
-            // Cell 2
-            var cell2 = row.insertCell(0);
-            cell2.innerHTML = stFirstName;
-      
-            // Cell 3
-            var cell3 = row.insertCell(0);
-            cell3.innerHTML = stLastName;
-      
-            // Cell 4
-            var cell4 = row.insertCell(0);
-            cell4.innerHTML = data[i].created_at;
-          }
-        });
-      } else{
-        console.log('No matching user records found');
-      }
-     
-    }) */
-}
+  }
 
-// Saved quiz search
-nameSearchBtn.addEventListener("click", searchByName);
+  function OpenBootstrapPopup(dataObj,btnId) {
+
+    $("#myModal").modal('show');
+      var dshRowCount = dashboardtable.rows.length;
+      
+
+      const quesString = ["questionA","questionB","questionC","questionD","questionE",
+                          "questionF","questionG","questionH","questionI","questionJ",
+                          "questionK","questionL","questionM","questionN","questionO",
+                          "questionP","questionQ","questionR","questionS","questionT",
+                          "questionU","questionV","questionW","questionX","questionY",
+                          "questionZ"];
+       
+      for (var i = dshRowCount - 1; i > 0; i--) {
+        dashboardtable.deleteRow(i);
+      }
+
+     for (i = 0; i < dataObj.length; i++) {
+      for (x = 0; x < dataObj[i].quizzes.length; x++) {
+
+        var dateStr = new Date(dataObj[i].quizzes[x].createdAt).toISOString();
+
+        if(dataObj[i].firstname+dataObj[i].lastname+dateStr === btnId) {
+
+          for(var q = 0;q< quesString.length; q++) {
+            var dsRow = dashboardtable.insertRow(dashboardtable.rows.length);
+            var quesStr = quesString[q];
+            
+            // Cell 2
+            var cell2 = dsRow.insertCell(0);
+            cell2.innerHTML = dataObj[i].quizzes[x][quesStr];
+    
+            // Cell 1
+            var cell1 = dsRow.insertCell(0);
+            cell1.innerHTML = quesStr;
+          }
+
+        }
+      }
+     }
+           
+  }
+
+
