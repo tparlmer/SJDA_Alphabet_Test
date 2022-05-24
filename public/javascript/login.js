@@ -14,11 +14,11 @@ function studentLoginClick() {
   showStudentLogin.style.display = "block";
   studentLoginButton.style.display = "none";
   teacherLoginButton.style.display = "none";
-  //   if (showStudentLogin.style.display === "none") {
-  //     showStudentLogin.style.display = "block";
-  //   } else {
-  //     showStudentLogin.style.display = "none";
-  //   }
+//   if (showStudentLogin.style.display === "none") {
+//     showStudentLogin.style.display = "block";
+//   } else {
+//     showStudentLogin.style.display = "none";
+//   }
 }
 teacherLoginButton.addEventListener("click", teacherLoginClick);
 function teacherLoginClick() {
@@ -26,42 +26,42 @@ function teacherLoginClick() {
   showTeacherLogin.style.display = "block";
   teacherLoginButton.style.display = "none";
   studentLoginButton.style.display = "none";
-  //   if (showTeacherLogin.style.display === "none") {
-  //     showTeacherLogin.style.display = "block";
-  //   } else {
-  //     showTeacherLogin.style.display = "none";
-  //   }
+//   if (showTeacherLogin.style.display === "none") {
+//     showTeacherLogin.style.display = "block";
+//   } else {
+//     showTeacherLogin.style.display = "none";
+//   }
 }
 
 //Student Login Start
 async function loginStudentHandler(event) {
-  event.preventDefault();
-
-  const firstname = document.querySelector("#firstname-login").value.trim();
-  const lastname = document.querySelector("#lastname-login").value.trim();
-  const password = document.querySelector("#password-login").value.trim();
-
-  if (firstname && lastname && password) {
-    const response = await fetch("/api/users/login", {
-      method: "post",
-      body: JSON.stringify({
-        firstname,
-        lastname,
-        role: "student",
-        password,
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
-
-    if (response.ok) {
-      console.log("you are now logged in");
-      //We need to have this go to the start quiz.ejs file
-      document.location.replace("/startquiz/");
-    } else {
-      alert(response.statusText);
+    event.preventDefault();
+  
+    const firstname = document.querySelector('#firstname-login').value.trim();
+    const lastname = document.querySelector('#lastname-login').value.trim();
+    const password = document.querySelector('#password-login').value.trim();
+  
+    if (firstname && lastname && password) {
+      const response = await fetch('/api/users/login', {
+        method: 'post',
+        body: JSON.stringify({
+          firstname,
+          lastname,
+          role:"student",
+          password
+        }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+  
+      if (response.ok) {
+        console.log("you are now logged in");
+        //We need to have this go to the start quiz.ejs file
+        document.location.replace('/startquiz/')
+      } else {
+        alert(response.statusText);
+      }
     }
   }
-
   document.querySelector('.student-form').addEventListener('submit', loginStudentHandler);
 //Student Login End
 
@@ -87,7 +87,7 @@ async function loginStudentHandler(event) {
   
       if (response.ok) {
         console.log("you are now logged in");
-       document.location.replace("/dashboard/");
+        window.alert("The teacher is now logged in please route to dashboard via render on the server.js file see start quiz for example")
         //render teacher dashboard html
       } else {
         alert(response.statusText);
@@ -132,8 +132,8 @@ async function signupFormHandler(event) {
       }
     }
   }
-}
 //Signup End
+
 
 
 function setFormMessage(formElement, type, message) {
@@ -152,24 +152,50 @@ function setInputError(inputElement, message) {
 setFormMessage(loginForm, 'success', 'You are logged in:)');
 */
 document.addEventListener("DOMContentLoaded", () => {
-  const loginForm = document.querySelector("#login");
+  // const loginForm = document.querySelector("#login");
   const createAccountForm = document.querySelector("#create-account");
+  const studentLogin = document.querySelector("#student-login")
+  const teacherLogin = document.querySelector("#teacher-login")
 
   document
-    .querySelector("#link-create-account")
+    .querySelector("#link-create-account-student")
     .addEventListener("click", (e) => {
       e.preventDefault();
-      loginForm.classList.add("form-hidden");
+      // loginForm.classList.add("form-hidden");
+      showStudentLogin.style.display = "none";
+      studentLogin.classList.add("form-hidden");
+      teacherLogin.classList.add("form-hidden");
+      createAccountForm.classList.remove("form-hidden");
+    });
+
+  document
+    .querySelector("#link-create-account-teacher")
+    .addEventListener("click", (e) => {
+      e.preventDefault();
+      // loginForm.classList.add("form-hidden");
+      showTeacherLogin.style.display = "none";
+      studentLogin.classList.add("form-hidden");
+      teacherLogin.classList.add("form-hidden");
       createAccountForm.classList.remove("form-hidden");
     });
 
   document.querySelector("#link-login").addEventListener("click", (e) => {
     e.preventDefault();
-    loginForm.classList.remove("form-hidden");
+    showStudentLogin.style.display = "block";
+    showTeacherLogin.style.display = "block";
+    studentLogin.classList.remove("form-hidden");
+    teacherLogin.classList.remove("form-hidden");
     createAccountForm.classList.add("form-hidden");
   });
 
-  /* loginForm.addEventListener('submit', e => {
+  /* 
+  showStudentLogin.style.display = "none";
+  showTeacherLogin.style.display = "none";
+  
+  studentLoginButton.style.display = "none";
+  teacherLoginButton.style.display = "none";
+  
+  loginForm.addEventListener('submit', e => {
         e.preventDefault();
 
         //perform your login
