@@ -103,17 +103,10 @@ async function signupFormHandler(event) {
   
     const firstname = document.querySelector('#firstname-signup').value.trim();
     const lastname = document.querySelector('#lastname-signup').value.trim();
-    const role = document.querySelectorAll('input[name="radio"]');
-    let selectedRole;
-    Array.prototype.forEach.call(roleButtons, function(btn) {
-        btn.addEventListener('change', function(){
-            selectedRole = this.value;
-            console.log(role);
-  });
-});
     const password = document.querySelector('#password-signup').value.trim();
-  
-    if (username && email && password) {
+    const role = document.querySelector('input[name="role"]:checked').value;
+
+    if (firstname && lastname && password) {
       const response = await fetch('/api/users', {
         method: 'post',
         body: JSON.stringify({
@@ -126,12 +119,19 @@ async function signupFormHandler(event) {
       });
   
       if (response.ok) {
-        document.location.replace('/login/');
+        console.log(role)
+        if(role==="student"){
+          document.location.replace('/startquiz/');
+        }
+         else if(role==="teacher"){
+          document.location.replace('/dashboard/');
+        }
       } else {
         alert(response.statusText);
       }
     }
   }
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
 //Signup End
 
 

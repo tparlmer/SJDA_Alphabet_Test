@@ -113,14 +113,14 @@
     <!--CREATE ACCOUNT-->
     <div class="form form-hidden" id="create-account">
       <div class="container">
-        <form>
+        <form class="signup-form" id="signup">
           <h1 class="form-title">Create Account</h1>
           <div class="form-message form-message-error"></div>
           <div class="form-input-group">
             <input
               type="text"
               class="form-input"
-              id="signup-username"
+              id="firstname-signup"
               autofocus
               placeholder="firstname"
             />
@@ -130,6 +130,7 @@
             <input
               type="text"
               class="form-input"
+              id="lastname-signup"
               autofocus
               placeholder="lastname"
             />
@@ -139,15 +140,16 @@
             <input
               type="password"
               class="form-input"
+              id="password-signup"
               autofocus
               placeholder="5 letter password"
             />
             <div class="form-input-error-message"></div>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" id="student-radio" name="radio" value="student" />
+            <input class="form-check-input" type="radio" id="teacher" name="role" value="student" />
             <label class="form-check-label" for="student">student</label>
-            <input class="form-check-input" type="radio" id="teacher-radio" name="radio" value="teacher" />
+            <input class="form-check-input" type="radio" id="student" name="role" value="teacher" />
             <label class="form-check-label" for="teacher">teacher</label>
           </div>
           <br>
