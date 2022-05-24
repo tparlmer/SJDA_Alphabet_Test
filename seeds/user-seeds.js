@@ -13,6 +13,12 @@ const userdata = [
         lastname:'lenovo',
         role: 'teacher',
         password:'abcd' 
+    },
+    {  
+        firstname:'craig',
+        lastname:'lenovo',
+        role: 'student',
+        password:'abcd' 
     }
 ]
 

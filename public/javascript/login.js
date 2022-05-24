@@ -3,8 +3,6 @@ const teacherLoginButton = document.getElementById("teacher-login-button");
 var showStudentLogin = document.getElementById("show-student-login");
 var showTeacherLogin = document.getElementById("show-teacher-login");
 
-
-
 showTeacherLogin.style.display = "none";
 showStudentLogin.style.display = "none";
 
@@ -14,6 +12,7 @@ function studentLoginClick() {
   showStudentLogin.style.display = "block";
   studentLoginButton.style.display = "none";
   teacherLoginButton.style.display = "none";
+
 //   if (showStudentLogin.style.display === "none") {
 //     showStudentLogin.style.display = "block";
 //   } else {
@@ -32,6 +31,12 @@ function teacherLoginClick() {
 //     showTeacherLogin.style.display = "none";
 //   }
 }
+document
+  .getElementById("stlogin")
+  .addEventListener("submit", loginStudentHandler);
+document
+  .querySelector(".teacher-form")
+  .addEventListener("submit", loginTeacherHandler);
 
 //Student Login Start
 async function loginStudentHandler(event) {
@@ -94,7 +99,8 @@ async function loginStudentHandler(event) {
       }
     }
   }
-  document.querySelector('.teacher-form').addEventListener('submit', loginTeacherHandler);
+}
+
 //Teacher Login end
 
 //Signup Start
@@ -134,8 +140,6 @@ async function signupFormHandler(event) {
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
 //Signup End
 
-
-
 function setFormMessage(formElement, type, message) {
   const messageElement = formElement.querySelector(".form-message");
 
@@ -152,6 +156,7 @@ function setInputError(inputElement, message) {
 setFormMessage(loginForm, 'success', 'You are logged in:)');
 */
 document.addEventListener("DOMContentLoaded", () => {
+
   // const loginForm = document.querySelector("#login");
   const createAccountForm = document.querySelector("#create-account");
   const studentLogin = document.querySelector("#student-login")
