@@ -44,6 +44,17 @@ There are 26 of these slides, one for each letter of the alphabet
 If you did not have an account clicking the "create new account" button will redirect you to this screen
 ![](./readme_images/Screen%20Shot%202022-05-22%20at%2012.03.32%20PM.png)
 
+6. Dashboard
+
+Users, after logging in as a teacher, are able to search students and view their quiz results
+![](./readme_images/dashboard-lookup.png)
+
+The results pop up after a student is searched
+![](./readme_images/dashboard.png)
+
+Clicking on a 'view results' button will bring up a modal with of the results for a specific quiz
+![](./readme_images/dashboard-modal.png)
+
 ## Technologies Used
 
 The following technologies were used to build this app
